@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentDataLayer", "StudentDataLayer\StudentDataLayer.csproj", "{016FC8A3-6F63-4798-84C2-53A87BF97E1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentDataLayerTesting", "StudentDataLayerTesting\StudentDataLayerTesting.csproj", "{504F5752-0C02-43B1-BEBB-727CA0343D34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{016FC8A3-6F63-4798-84C2-53A87BF97E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{016FC8A3-6F63-4798-84C2-53A87BF97E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{016FC8A3-6F63-4798-84C2-53A87BF97E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504F5752-0C02-43B1-BEBB-727CA0343D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504F5752-0C02-43B1-BEBB-727CA0343D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504F5752-0C02-43B1-BEBB-727CA0343D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504F5752-0C02-43B1-BEBB-727CA0343D34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
