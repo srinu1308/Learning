@@ -247,6 +247,8 @@
     <Content Include="Global.asax" />
     <Content Include="Site.Master" />
     <Content Include="Students.aspx" />
+    <Content Include="Students_Ajax.aspx" />
+    <Content Include="Students_JQuery.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -418,6 +420,20 @@
     </Compile>
     <Compile Include="Students.aspx.designer.cs">
       <DependentUpon>Students.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students_Ajax.aspx.cs">
+      <DependentUpon>Students_Ajax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students_Ajax.aspx.designer.cs">
+      <DependentUpon>Students_Ajax.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Students_JQuery.aspx.cs">
+      <DependentUpon>Students_JQuery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Students_JQuery.aspx.designer.cs">
+      <DependentUpon>Students_JQuery.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
