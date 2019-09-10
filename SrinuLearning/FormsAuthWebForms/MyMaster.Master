@@ -1,0 +1,28 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MyMaster.master.cs" Inherits="FormsAuthWebForms.MyMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="height: 160px">
+    <form id="form1" runat="server">
+        <div>
+            <div id="master" style="height: 20%;width:100%">
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Home" />
+                <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Logout" />
+            </div>
+            <div id="down" style="height: 80%;width:100%">
+                <div id="downleft" style="width: 20%;height:80%;left:auto"></div>
+                <div style="width: 80%;height:80%;left:20%;top:20%">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
