@@ -11,6 +11,7 @@ namespace ASPNetMVCFormAuth.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            string user = HttpContext.User.Identity.Name;
             return View();
         }
 

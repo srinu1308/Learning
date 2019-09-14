@@ -46,7 +46,16 @@ namespace ASPNetMVCFormAuth.Controllers
 
         public ActionResult Logout()
         {
-            return View();
+            FormsAuthentication.SignOut();
+            Session.Clear();
+            Session.Abandon();
+
+            HttpCookie cookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            cookie.Expires = DateTime.Now.AddMinutes(-2);
+            cookie.Path = "/";
+            Response.Cookies.Add(cookie);
+
+            return RedirectToAction("Login", "UserLogin", null);
         }
     }
 }
