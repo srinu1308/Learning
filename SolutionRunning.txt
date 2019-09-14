@@ -1,0 +1,5 @@
+To solve nuget issues ..on 2017
+add this path to nuget value (Tools --> options --> NugetPackage --> add as a source)
+https://www.nuget.org/api/v2
+
+and build javascript projects seperately 
