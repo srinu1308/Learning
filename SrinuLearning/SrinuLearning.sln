@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentDataLayer", "StudentDataLayer\StudentDataLayer.csproj", "{016FC8A3-6F63-4798-84C2-53A87BF97E1E}"
 EndProject
@@ -32,6 +32,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormsAuthWebForms", "FormsAuthWebForms\FormsAuthWebForms.csproj", "{B58A8485-807D-4CD6-B273-03939ABB8377}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNetMVCFormAuth", "ASPNetMVCFormAuth\ASPNetMVCFormAuth.csproj", "{FF57B580-2646-45B9-90F4-1800CBB3681F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPMVCBasicAuthCheck", "ASPMVCBasicAuthCheck\ASPMVCBasicAuthCheck.csproj", "{C74B3FCC-A8AF-4A05-9C6D-F261D0DF8FC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPMVCOnlyOwinAuth", "ASPMVCOnlyOwinAuth\ASPMVCOnlyOwinAuth.csproj", "{F64163F5-EAB2-4688-B01F-70F27562E017}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,8 +91,19 @@ Global
 		{FF57B580-2646-45B9-90F4-1800CBB3681F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF57B580-2646-45B9-90F4-1800CBB3681F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF57B580-2646-45B9-90F4-1800CBB3681F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C74B3FCC-A8AF-4A05-9C6D-F261D0DF8FC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C74B3FCC-A8AF-4A05-9C6D-F261D0DF8FC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C74B3FCC-A8AF-4A05-9C6D-F261D0DF8FC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C74B3FCC-A8AF-4A05-9C6D-F261D0DF8FC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64163F5-EAB2-4688-B01F-70F27562E017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F64163F5-EAB2-4688-B01F-70F27562E017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64163F5-EAB2-4688-B01F-70F27562E017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F64163F5-EAB2-4688-B01F-70F27562E017}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E07F34C5-D398-4EEA-B467-7E12C092BF72}
 	EndGlobalSection
 EndGlobal
