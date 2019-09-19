@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function()
+    {
+        $("#btnlogin").click(function () {
+
+            var userName = $("#txtUserName").val();
+            var password = $("#txtPassword").val();
+            $.ajax({
+                url:"/Token",
+                type: "POST",
+                data: $.param({ grant_type: 'password', username: userName, password: password }),
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                success: function (response) {
+                    sessionStorage.setItem('userName', response.userName);
+                    sessionStorage.setItem('accessToken', response.access_token);
+                    var authHeaders = {};
+                    authHeaders.Authorization = 'Bearer ' + response.access_token;
+                    //alert("authentication success");
+                    window.location.href = window.location.origin+"/Home/Index";
+                    
+                },
+                error: function () {
+                    // $("#msg").text("Authentication failed");
+                    alert("authentication failed");
+                }
+            });
+        });
+    })
+</script>
+<h2>Login</h2>
+<table>
+    <tr>
+        <td>
+            @Html.Label("UserName")
+        </td>
+        <td>
+            @Html.TextBox("txtUserName")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.Label("Password")
+        </td>
+        <td>
+            @Html.TextBox("txtPassword")
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <input type="button" value="Login" id="btnlogin" />
+        </td>
+    </tr>
+</table>
+

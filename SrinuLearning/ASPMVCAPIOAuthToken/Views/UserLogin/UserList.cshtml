@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        var access_token = sessionStorage.getItem("accessToken");
+        var authHeaders = {};
+        authHeaders.Authorization = 'Bearer ' + access_token;
+
+        $.ajax({
+            url: "/api/UserAPI",
+            type: "GET",
+            ContentType: "application/json",
+            headers: authHeaders,
+            success:function(data)
+            {
+                var innerHtml = "";
+                var tablebegin = '<table border="1">';
+                var tableEnd = "</table>";
+                var rowbegin = "<tr>";
+                var rowEdn = "</tr>";
+                var tdbegin = "<td>";
+                var tdEnd = "</td";
+
+                var loopHtml = "";
+                $.each(data, function (id, user) {
+                                        
+                    var userIDTd = tdbegin + user.ID + tdEnd;
+                    var nameTD = tdbegin + user.Name + tdEnd;
+                    var ageTd = tdbegin + user.Age + tdEnd;
+
+                    loopHtml = loopHtml
+                        + rowbegin
+                        + userIDTd
+                        + nameTD
+                        + ageTd
+                        + rowEdn;
+
+                    //alert(user.ID + ' ' + user.Name + ' ' + user.Age);
+                });
+
+                innerHtml = innerHtml
+                    + tablebegin
+                    + loopHtml
+                    + tableEnd;
+
+                //alert(innerHtml);
+                $("#divUserList").html(innerHtml);
+            },
+            error:function(response)
+            {
+                alert(JSON.stringify(response))
+                
+            }
+
+        });
+
+
+    });
+</script>
+<h2>UserList</h2>
+<div id="divUserList">
+
+</div>

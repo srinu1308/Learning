@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "UserHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserHome</h2>
+<table>
+    <tr>
+        <td>@Html.ActionLink("Users List","UserList","UserLogin")</td>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Users By Name", "UserByName", "UserLogin")</td>
+    </tr>
+</table>
+
