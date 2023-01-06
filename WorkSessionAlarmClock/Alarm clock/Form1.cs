@@ -35,14 +35,17 @@ namespace Alarm_clock
         {
             // default for one minute
             int minutesMilliSeconds = 60000;
-            int timerElapseTime = minutesMilliSeconds;
+            int timerElapseTime = 1;
             bool isSuccess = int.TryParse(ConfigurationManager.AppSettings["TimerElapseTime"], out timerElapseTime);
             if (!isSuccess)
             {
-                timerElapseTime = minutesMilliSeconds;
+                timerElapseTime = 1;
+                textBoxTimerElapsedTime.Text = timerElapseTime.ToString();
+                timerElapseTime = timerElapseTime * minutesMilliSeconds;
             }
             else
             {
+                textBoxTimerElapsedTime.Text = timerElapseTime.ToString();
                 // we read in minutes
                 timerElapseTime = timerElapseTime*minutesMilliSeconds;
             }
@@ -98,7 +101,7 @@ namespace Alarm_clock
             var diffMinutes = diffTime.Minutes;
 
             //if (currentTime.Hour == userTime.Hour && currentTime.Minute == userTime.Minute && currentTime.Second == userTime.Second)
-            if(diffMinutes > 0)
+            if(diffMinutes >= 0)
             {
                 timer.Stop();
 
@@ -124,12 +127,14 @@ namespace Alarm_clock
                         soundLocation = "Alarm Clock Sound.wav";
                     }
 
-                    int palyLength = 2000;
+                    int milliSeconds = 1000;
+                    int palyLength = 2;
                     bool isSuccess=int.TryParse(ConfigurationManager.AppSettings["SoundPlayLength"],out palyLength);
                     if (!isSuccess)
                     {
-                        palyLength = 2000;
+                        palyLength = 2;
                     }
+                    palyLength = palyLength * milliSeconds;
 
                     bool playAlarm = false;
                     bool isSuccess2 = bool.TryParse(ConfigurationManager.AppSettings["PlayAlarm"], out playAlarm);
@@ -274,6 +279,16 @@ namespace Alarm_clock
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }
