@@ -91,6 +91,10 @@ namespace Alarm_clock
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
             totalElapses++;
+            this.Invoke(new Action(() =>
+            {                
+                labelTotalElapses.Text = totalElapses.ToString();
+            }));
 
             DateTime currentTime = DateTime.Now;
             
@@ -116,6 +120,20 @@ namespace Alarm_clock
 
                 addSession(session);
                 isSessionStarted = false;
+
+                this.Invoke(new Action(() =>
+                {
+                    lblStatus.Text = "Session is ended. Take Break";
+
+                    TimeSpan totalSpan = new TimeSpan(0);
+                    foreach (var item in todaySessions)
+                    {
+                        totalSpan = totalSpan + (item.SessionEnd - item.SessionStart);
+                    }
+
+                    labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
+                    labelTotalElapses.Text = totalElapses.ToString();
+                }));
 
                 try
                 {
@@ -152,7 +170,7 @@ namespace Alarm_clock
 
                         System.Threading.Thread.Sleep(palyLength);
                         soundPlayer.Stop();
-                    }                   
+                    }                    
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
