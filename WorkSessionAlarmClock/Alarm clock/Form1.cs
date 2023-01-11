@@ -115,8 +115,8 @@ namespace Alarm_clock
                 {
                     SessionStart=dateTimePicker1.Value,
                     SessionEnd=dateTimePickerTimerEnds.Value,
-                    TotalSessionMinutes=(dateTimePickerTimerEnds.Value - dateTimePicker1.Value).Minutes
-                };
+                    TotalSession=(dateTimePickerTimerEnds.Value - dateTimePicker1.Value).ToString(@"hh\:mm\:ss")
+            };
 
                 addSession(session);
                 isSessionStarted = false;
@@ -195,7 +195,7 @@ namespace Alarm_clock
             {
                 SessionStart = dateTimePicker1.Value,
                 SessionEnd = dateTimePickerTimerEnds.Value,
-                TotalSessionMinutes = (dateTimePickerTimerEnds.Value - dateTimePicker1.Value).Minutes
+                TotalSession = (dateTimePickerTimerEnds.Value - dateTimePicker1.Value).ToString(@"hh\:mm\:ss")
             };
 
             addSession(session);
@@ -240,15 +240,28 @@ namespace Alarm_clock
 
         private void btnAllSessions_Click(object sender, EventArgs e)
         {
-           dataGridView1.DataSource = todaySessions;
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = todaySessions;
+            List<SessionFormatted> listSessionFormatted = new List<SessionFormatted>();
 
             TimeSpan totalSpan = new TimeSpan(0);
             foreach (var item in todaySessions)
             {
                 totalSpan = totalSpan + (item.SessionEnd - item.SessionStart);
+
+                SessionFormatted sessionFormatted = new SessionFormatted()
+                {
+                    SessionStart = item.SessionStart.ToString("hh:mm:ss tt"),
+                    SessionEnd = item.SessionEnd.ToString("hh:mm:ss tt"),
+                    TotalSession = item.TotalSession
+                };
+
+                listSessionFormatted.Add(sessionFormatted);
             }
+            
+            dataGridView1.DataSource = listSessionFormatted;
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = listSessionFormatted;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
 
             labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
             labelTotalElapses.Text = totalElapses.ToString();        

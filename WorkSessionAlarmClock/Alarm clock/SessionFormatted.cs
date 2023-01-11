@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Alarm_clock
 {
-    class Session
+    class SessionFormatted
     {
-        public DateTime SessionStart { get; set; }
-        public DateTime SessionEnd { get; set; }
+        public string SessionStart { get; set; }
+        public string SessionEnd { get; set; }
         public string TotalSession { get; set; }
     }
 }
