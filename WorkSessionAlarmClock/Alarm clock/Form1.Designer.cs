@@ -51,6 +51,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxTimerElapsedTime = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelRiskTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(241, 13);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(428, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(450, 26);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // startButton
@@ -81,7 +83,7 @@
             // stopButton
             // 
             this.stopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.stopButton.Location = new System.Drawing.Point(526, 205);
+            this.stopButton.Location = new System.Drawing.Point(548, 205);
             this.stopButton.Margin = new System.Windows.Forms.Padding(2);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(143, 37);
@@ -106,7 +108,7 @@
             this.txtboxSessionTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtboxSessionTime.Location = new System.Drawing.Point(241, 53);
             this.txtboxSessionTime.Name = "txtboxSessionTime";
-            this.txtboxSessionTime.Size = new System.Drawing.Size(427, 26);
+            this.txtboxSessionTime.Size = new System.Drawing.Size(450, 26);
             this.txtboxSessionTime.TabIndex = 5;
             this.txtboxSessionTime.Text = "60";
             // 
@@ -129,7 +131,7 @@
             this.dateTimePickerTimerEnds.Location = new System.Drawing.Point(241, 90);
             this.dateTimePickerTimerEnds.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTimerEnds.Name = "dateTimePickerTimerEnds";
-            this.dateTimePickerTimerEnds.Size = new System.Drawing.Size(427, 26);
+            this.dateTimePickerTimerEnds.Size = new System.Drawing.Size(450, 26);
             this.dateTimePickerTimerEnds.TabIndex = 7;
             // 
             // lblStatus
@@ -159,7 +161,7 @@
             // btnAllSessions
             // 
             this.btnAllSessions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAllSessions.Location = new System.Drawing.Point(681, 205);
+            this.btnAllSessions.Location = new System.Drawing.Point(715, 205);
             this.btnAllSessions.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllSessions.Name = "btnAllSessions";
             this.btnAllSessions.Size = new System.Drawing.Size(166, 37);
@@ -191,18 +193,18 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(241, 289);
+            this.dataGridView1.Location = new System.Drawing.Point(241, 307);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(606, 285);
+            this.dataGridView1.Size = new System.Drawing.Size(640, 267);
             this.dataGridView1.TabIndex = 13;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(522, 254);
+            this.label5.Location = new System.Drawing.Point(387, 254);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(147, 20);
             this.label5.TabIndex = 14;
@@ -213,11 +215,12 @@
             this.labelTotal.AutoSize = true;
             this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelTotal.Location = new System.Drawing.Point(677, 254);
+            this.labelTotal.Location = new System.Drawing.Point(387, 284);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(71, 20);
             this.labelTotal.TabIndex = 15;
             this.labelTotal.Text = "00:00:00";
+            this.labelTotal.Click += new System.EventHandler(this.labelTotal_Click);
             // 
             // label6
             // 
@@ -234,7 +237,7 @@
             this.labelTotalElapses.AutoSize = true;
             this.labelTotalElapses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalElapses.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelTotalElapses.Location = new System.Drawing.Point(387, 254);
+            this.labelTotalElapses.Location = new System.Drawing.Point(237, 284);
             this.labelTotalElapses.Name = "labelTotalElapses";
             this.labelTotalElapses.Size = new System.Drawing.Size(18, 20);
             this.labelTotalElapses.TabIndex = 17;
@@ -266,7 +269,7 @@
             this.textBoxTimerElapsedTime.Location = new System.Drawing.Point(241, 129);
             this.textBoxTimerElapsedTime.Name = "textBoxTimerElapsedTime";
             this.textBoxTimerElapsedTime.ReadOnly = true;
-            this.textBoxTimerElapsedTime.Size = new System.Drawing.Size(427, 26);
+            this.textBoxTimerElapsedTime.Size = new System.Drawing.Size(450, 26);
             this.textBoxTimerElapsedTime.TabIndex = 20;
             this.textBoxTimerElapsedTime.Text = "1";
             // 
@@ -282,11 +285,34 @@
             this.label9.Text = "(You can change all configurationsit in config file)";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(544, 254);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(304, 20);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "Risk-Contineous Non Break Session Time";
+            // 
+            // labelRiskTime
+            // 
+            this.labelRiskTime.AutoSize = true;
+            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelRiskTime.Location = new System.Drawing.Point(544, 284);
+            this.labelRiskTime.Name = "labelRiskTime";
+            this.labelRiskTime.Size = new System.Drawing.Size(71, 20);
+            this.labelRiskTime.TabIndex = 23;
+            this.labelRiskTime.Text = "00:00:00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(861, 624);
+            this.ClientSize = new System.Drawing.Size(893, 624);
+            this.Controls.Add(this.labelRiskTime);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBoxTimerElapsedTime);
             this.Controls.Add(this.label8);
@@ -341,6 +367,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxTimerElapsedTime;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelRiskTime;
     }
 }
 

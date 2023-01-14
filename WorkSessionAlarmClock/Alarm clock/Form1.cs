@@ -133,6 +133,10 @@ namespace Alarm_clock
 
                     labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
                     labelTotalElapses.Text = totalElapses.ToString();
+
+                    TimeSpan riskTime = getRiskTime();
+                    labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+
                 }));
 
                 try
@@ -170,11 +174,15 @@ namespace Alarm_clock
 
                         System.Threading.Thread.Sleep(palyLength);
                         soundPlayer.Stop();
-                    }                    
+                    }
+
+                    TimeSpan riskTime = getRiskTime();                    
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
-                    MessageBox.Show("Session is ended. Take Break.\n Drink Water.\n Eat Food.\n Standup", 
+                    MessageBox.Show("Session is ended."
+                        +"\nYour Non-Break Session Work Today : "+ riskTime.ToString(@"hh\:mm\:ss")
+                        + "\nTake Break. Drink Water. Eat Food. Standup", 
                         "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
                     timer.Stop();
@@ -205,6 +213,19 @@ namespace Alarm_clock
             soundPlayer.Stop();
             //MessageBox.Show("Your timer is stopped", "Stopping...");
             lblStatus.Text = "Session is ended. Take Break";
+
+
+            TimeSpan totalSpan = new TimeSpan(0);
+            foreach (var item in todaySessions)
+            {
+                totalSpan = totalSpan + (item.SessionEnd - item.SessionStart);
+            }
+
+            labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
+            labelTotalElapses.Text = totalElapses.ToString();
+
+            TimeSpan riskTime = getRiskTime();
+            labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
         }
 
         private void txtboxSessionTime_TextChanged(object sender, EventArgs e)
@@ -264,7 +285,10 @@ namespace Alarm_clock
 
 
             labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
-            labelTotalElapses.Text = totalElapses.ToString();        
+            labelTotalElapses.Text = totalElapses.ToString();
+
+            TimeSpan riskTime = getRiskTime();
+            labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
         }
 
 
@@ -300,6 +324,46 @@ namespace Alarm_clock
             }
         }
 
+        private TimeSpan getRiskTime()
+        {
+            TimeSpan riskTime = new TimeSpan(0);
+
+            int count = 0;
+            Session previousSession = new Session();
+
+            TimeSpan firstTimeSpan = new TimeSpan(0);
+            Boolean isFirstTimeSpanAdded = false;
+
+            foreach (var item in todaySessions)
+            {
+                count++;
+                if(count ==1)
+                {
+                    previousSession = item;
+                    continue;
+                }
+
+                TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
+                
+                // we only add if gap between two sessions is less than 10 minutes
+                if((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 10))
+                {
+                    if(!isFirstTimeSpanAdded)
+                    {
+                        firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
+                        riskTime = riskTime + firstTimeSpan;
+
+                        isFirstTimeSpanAdded = true;
+                    }
+
+                    TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
+                    riskTime = riskTime + currentDifference;
+                }
+            }
+
+            return riskTime;
+        }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -320,6 +384,11 @@ namespace Alarm_clock
         }
 
         private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTotal_Click(object sender, EventArgs e)
         {
 
         }
