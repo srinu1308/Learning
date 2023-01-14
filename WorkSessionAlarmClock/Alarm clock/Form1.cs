@@ -359,6 +359,8 @@ namespace Alarm_clock
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;
                 }
+
+                previousSession = item;
             }
 
             return riskTime;
