@@ -181,7 +181,7 @@ namespace Alarm_clock
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
                     MessageBox.Show("Session is ended."
-                        +"\nYour Non-Break Session Work Today : "+ riskTime.ToString(@"hh\:mm\:ss")
+                        +"\nPrevious Non-Break Contineous Session Time : "+ riskTime.ToString(@"hh\:mm\:ss")
                         + "\nTake Break. Drink Water. Eat Food. Standup", 
                         "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
@@ -334,21 +334,25 @@ namespace Alarm_clock
             TimeSpan firstTimeSpan = new TimeSpan(0);
             Boolean isFirstTimeSpanAdded = false;
 
-            foreach (var item in todaySessions)
+            int i = todaySessions.Count;
+
+            for(int j=i-1; j>=0;j--)
             {
+                var item = todaySessions[j];
+
                 count++;
-                if(count ==1)
+                if (count == 1)
                 {
                     previousSession = item;
                     continue;
                 }
 
                 TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
-                
+
                 // we only add if gap between two sessions is less than 10 minutes
-                if((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 10))
+                if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 10))
                 {
-                    if(!isFirstTimeSpanAdded)
+                    if (!isFirstTimeSpanAdded)
                     {
                         firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
                         riskTime = riskTime + firstTimeSpan;
@@ -359,9 +363,18 @@ namespace Alarm_clock
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;
                 }
+                else
+                {
+                    break;
+                }
 
                 previousSession = item;
             }
+
+            //foreach (var item in todaySessions)
+            //{
+                
+            //}
 
             return riskTime;
         }
