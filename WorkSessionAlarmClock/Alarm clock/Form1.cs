@@ -19,7 +19,7 @@ namespace Alarm_clock
         private System.Timers.Timer timer;
         readonly SoundPlayer soundPlayer = new SoundPlayer();
 
-        private int sessionTotalTime = 60;
+        private int sessionTotalTime = 45;
         private List<Session> todaySessions { get; set; }
 
         private bool isSessionStarted = false;
@@ -60,7 +60,7 @@ namespace Alarm_clock
 
             if(!int.TryParse(txtboxSessionTime.Text, out sessionTotalTime))
             {
-                sessionTotalTime = 60;
+                sessionTotalTime = 45;
                 txtboxSessionTime.Text = sessionTotalTime.ToString();
             }
 
@@ -247,7 +247,7 @@ namespace Alarm_clock
 
             if (!int.TryParse(txtboxSessionTime.Text, out sessionTotalTime))
             {
-                sessionTotalTime = 60;
+                sessionTotalTime = 45;
                 txtboxSessionTime.Text = sessionTotalTime.ToString();
             }
 
@@ -332,7 +332,6 @@ namespace Alarm_clock
             Session previousSession = new Session();
 
             TimeSpan firstTimeSpan = new TimeSpan(0);
-            Boolean isFirstTimeSpanAdded = false;
 
             int i = todaySessions.Count;
 
@@ -343,23 +342,17 @@ namespace Alarm_clock
                 count++;
                 if (count == 1)
                 {
-                    previousSession = item;
+                    previousSession = item;                    
+                    firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
+                    riskTime = riskTime + firstTimeSpan;                                            
                     continue;
                 }
 
                 TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
 
-                // we only add if gap between two sessions is less than 10 minutes
-                if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 10))
+                // we only add if gap between two sessions is less than 15 minutes
+                if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 15))
                 {
-                    if (!isFirstTimeSpanAdded)
-                    {
-                        firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
-                        riskTime = riskTime + firstTimeSpan;
-
-                        isFirstTimeSpanAdded = true;
-                    }
-
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;
                 }

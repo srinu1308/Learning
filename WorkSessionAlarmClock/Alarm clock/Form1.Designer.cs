@@ -53,6 +53,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.labelRiskTime = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +112,7 @@
             this.txtboxSessionTime.Name = "txtboxSessionTime";
             this.txtboxSessionTime.Size = new System.Drawing.Size(450, 26);
             this.txtboxSessionTime.TabIndex = 5;
-            this.txtboxSessionTime.Text = "60";
+            this.txtboxSessionTime.Text = "45";
             // 
             // label2
             // 
@@ -306,11 +308,33 @@
             this.labelRiskTime.TabIndex = 23;
             this.labelRiskTime.Text = "00:00:00";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(711, 96);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(223, 20);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Default Session Time: 45 mins";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(711, 132);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(231, 20);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Default Session Break: 15 mins";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 624);
+            this.ClientSize = new System.Drawing.Size(947, 624);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.labelRiskTime);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label9);
@@ -369,6 +393,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelRiskTime;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label10;
     }
 }
 
