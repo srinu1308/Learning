@@ -134,7 +134,42 @@ namespace Alarm_clock
                     labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
                     labelTotalElapses.Text = totalElapses.ToString();
 
-                    TimeSpan riskTime = getRiskTime();
+                    // for risk time
+                    TimeSpan riskTime = new TimeSpan(0);
+                    int count = 0;
+                    Session previousSession = new Session();
+                    TimeSpan firstTimeSpan = new TimeSpan(0);
+                    int i = todaySessions.Count;
+
+                    for (int j = i - 1; j >= 0; j--)
+                    {
+                        var item = todaySessions[j];
+
+                        count++;
+                        if (count == 1)
+                        {
+                            previousSession = item;
+                            firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
+                            riskTime = riskTime + firstTimeSpan;
+                            continue;
+                        }
+
+                        TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
+
+                        // we only add if gap between two sessions is less than 15 minutes
+                        if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 15))
+                        {
+                            TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
+                            riskTime = riskTime + currentDifference;
+                        }
+                        else
+                        {
+                            break;
+                        }
+
+                        previousSession = item;
+                    }
+                    //TimeSpan riskTime = getRiskTime();
                     labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
 
                 }));
