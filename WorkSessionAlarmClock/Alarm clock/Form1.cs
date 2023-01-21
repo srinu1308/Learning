@@ -92,20 +92,20 @@ namespace Alarm_clock
         {
             totalElapses++;
             this.Invoke(new Action(() =>
-            {                
+            {
                 labelTotalElapses.Text = totalElapses.ToString();
             }));
 
             DateTime currentTime = DateTime.Now;
-            
+
             //DateTime userTime = dateTimePicker1.Value;
             DateTime userTime = dateTimePickerTimerEnds.Value;
 
-            var diffTime=currentTime - userTime;
+            var diffTime = currentTime - userTime;
             var diffMinutes = diffTime.Minutes;
 
             //if (currentTime.Hour == userTime.Hour && currentTime.Minute == userTime.Minute && currentTime.Second == userTime.Second)
-            if(diffMinutes >= 0)
+            if (diffMinutes >= 0)
             {
                 timer.Stop();
 
@@ -113,10 +113,10 @@ namespace Alarm_clock
 
                 Session session = new Session
                 {
-                    SessionStart=dateTimePicker1.Value,
-                    SessionEnd=dateTimePickerTimerEnds.Value,
-                    TotalSession=(dateTimePickerTimerEnds.Value - dateTimePicker1.Value).ToString(@"hh\:mm\:ss")
-            };
+                    SessionStart = dateTimePicker1.Value,
+                    SessionEnd = dateTimePickerTimerEnds.Value,
+                    TotalSession = (dateTimePickerTimerEnds.Value - dateTimePicker1.Value).ToString(@"hh\:mm\:ss")
+                };
 
                 addSession(session);
                 isSessionStarted = false;
@@ -134,59 +134,23 @@ namespace Alarm_clock
                     labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
                     labelTotalElapses.Text = totalElapses.ToString();
 
-                    // for risk time
-                    TimeSpan riskTime = new TimeSpan(0);
-                    int count = 0;
-                    Session previousSession = new Session();
-                    TimeSpan firstTimeSpan = new TimeSpan(0);
-                    int i = todaySessions.Count;
-
-                    for (int j = i - 1; j >= 0; j--)
-                    {
-                        var item = todaySessions[j];
-
-                        count++;
-                        if (count == 1)
-                        {
-                            previousSession = item;
-                            firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
-                            riskTime = riskTime + firstTimeSpan;
-                            continue;
-                        }
-
-                        TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
-
-                        // we only add if gap between two sessions is less than 15 minutes
-                        if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 15))
-                        {
-                            TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
-                            riskTime = riskTime + currentDifference;
-                        }
-                        else
-                        {
-                            break;
-                        }
-
-                        previousSession = item;
-                    }
-                    //TimeSpan riskTime = getRiskTime();
+                    TimeSpan riskTime = getRiskTime();
                     labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
-
                 }));
 
                 try
                 {
                     //lblStatus.Text = "Session is ended. Take Break"; 
 
-                    var soundLocation=ConfigurationManager.AppSettings["SoundLocationPath"];
-                    if(string.IsNullOrEmpty(soundLocation))
+                    var soundLocation = ConfigurationManager.AppSettings["SoundLocationPath"];
+                    if (string.IsNullOrEmpty(soundLocation))
                     {
                         soundLocation = "Alarm Clock Sound.wav";
                     }
 
                     int milliSeconds = 1000;
                     int palyLength = 2;
-                    bool isSuccess=int.TryParse(ConfigurationManager.AppSettings["SoundPlayLength"],out palyLength);
+                    bool isSuccess = int.TryParse(ConfigurationManager.AppSettings["SoundPlayLength"], out palyLength);
                     if (!isSuccess)
                     {
                         palyLength = 2;
@@ -202,7 +166,7 @@ namespace Alarm_clock
 
                     soundPlayer.SoundLocation = soundLocation;
 
-                    if(playAlarm)
+                    if (playAlarm)
                     {
                         soundPlayer.PlayLooping();
                         //soundPlayer.Play();
@@ -215,16 +179,16 @@ namespace Alarm_clock
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
-                    MessageBox.Show("Session is ended."
-                        +"\nPrevious Non-Break Contineous Session Time : "+ riskTime.ToString(@"hh\:mm\:ss")
-                        + "\nTake Break. Drink Water. Eat Food. Standup", 
+                    MessageBox.Show("Session is ended.\n" 
+                        +"Previous contineous Non-Break Session : "+ riskTime.ToString(@"hh\:mm\:ss")
+                    + "\nTake Break. Drink Water. Eat Food. Standup",
                         "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
                     timer.Stop();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error Occured: "+ex.Message);
+                    MessageBox.Show("Error Occured: " + ex.Message);
                     //lblStatus.Text = "Error : Session is finished!!";
                 }
             }
@@ -364,7 +328,7 @@ namespace Alarm_clock
             TimeSpan riskTime = new TimeSpan(0);
 
             int count = 0;
-            Session previousSession = new Session();
+            Session lastSession = new Session();
 
             TimeSpan firstTimeSpan = new TimeSpan(0);
 
@@ -377,16 +341,19 @@ namespace Alarm_clock
                 count++;
                 if (count == 1)
                 {
-                    previousSession = item;                    
-                    firstTimeSpan = previousSession.SessionEnd - previousSession.SessionStart;
+                    lastSession = item;                    
+                    firstTimeSpan = lastSession.SessionEnd - lastSession.SessionStart;
                     riskTime = riskTime + firstTimeSpan;                                            
                     continue;
                 }
 
-                TimeSpan twoSessionGap = item.SessionStart - previousSession.SessionEnd;
+                TimeSpan twoSessionGap = lastSession.SessionStart - item.SessionEnd;
+
+                int gapHours = Math.Abs(twoSessionGap.Hours);
+                int gapMinutes = Math.Abs(twoSessionGap.Minutes);
 
                 // we only add if gap between two sessions is less than 15 minutes
-                if ((twoSessionGap.Hours == 0) && (twoSessionGap.Minutes <= 15))
+                if ((gapHours == 0) && (gapMinutes <= 15))
                 {
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;
@@ -396,7 +363,7 @@ namespace Alarm_clock
                     break;
                 }
 
-                previousSession = item;
+                lastSession = item;
             }
 
             //foreach (var item in todaySessions)
