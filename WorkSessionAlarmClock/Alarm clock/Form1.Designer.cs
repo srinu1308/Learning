@@ -199,7 +199,7 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(640, 267);
+            this.dataGridView1.Size = new System.Drawing.Size(640, 292);
             this.dataGridView1.TabIndex = 13;
             // 
             // label5
@@ -280,7 +280,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(238, 587);
+            this.label9.Location = new System.Drawing.Point(238, 602);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(327, 18);
             this.label9.TabIndex = 21;
@@ -322,17 +322,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(711, 132);
+            this.label10.Location = new System.Drawing.Point(711, 135);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(204, 20);
+            this.label10.Size = new System.Drawing.Size(191, 20);
             this.label10.TabIndex = 25;
-            this.label10.Text = "Min Session Break: 15 mins";
+            this.label10.Text = "Min Session Break: 5mins";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(926, 624);
+            this.ClientSize = new System.Drawing.Size(911, 629);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labelRiskTime);
