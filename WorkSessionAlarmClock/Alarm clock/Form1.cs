@@ -20,6 +20,7 @@ namespace Alarm_clock
         readonly SoundPlayer soundPlayer = new SoundPlayer();
 
         private int sessionTotalTime = 45;
+        private int minSessionBrake = 5;
         private List<Session> todaySessions { get; set; }
 
         private bool isSessionStarted = false;
@@ -340,6 +341,13 @@ namespace Alarm_clock
 
         private TimeSpan getRiskTime()
         {
+            bool isSuccess = int.TryParse(ConfigurationManager.AppSettings["MinimumSessionBrakeTime"], out minSessionBrake);
+            if (!isSuccess)
+            {
+                // for calculating non contineous session break time
+                minSessionBrake = 5;
+            }
+
             TimeSpan riskTime = new TimeSpan(0);
 
             int count = 0;
@@ -368,7 +376,7 @@ namespace Alarm_clock
                 int gapMinutes = Math.Abs(twoSessionGap.Minutes);
 
                 // we only add if gap between two sessions is less than 15 minutes
-                if ((gapHours == 0) && (gapMinutes <= 15))
+                if ((gapHours == 0) && (gapMinutes <= minSessionBrake))
                 {
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;

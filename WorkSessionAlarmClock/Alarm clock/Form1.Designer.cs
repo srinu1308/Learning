@@ -314,9 +314,9 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(711, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(223, 20);
+            this.label4.Size = new System.Drawing.Size(196, 20);
             this.label4.TabIndex = 24;
-            this.label4.Text = "Default Session Time: 45 mins";
+            this.label4.Text = "Max Session Time: 45mins";
             // 
             // label10
             // 
@@ -324,15 +324,15 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(711, 132);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(231, 20);
+            this.label10.Size = new System.Drawing.Size(204, 20);
             this.label10.TabIndex = 25;
-            this.label10.Text = "Default Session Break: 15 mins";
+            this.label10.Text = "Min Session Break: 15 mins";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 624);
+            this.ClientSize = new System.Drawing.Size(926, 624);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labelRiskTime);
