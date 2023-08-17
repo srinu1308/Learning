@@ -261,6 +261,7 @@ namespace Alarm_clock
         private void btnAllSessions_Click(object sender, EventArgs e)
         {
             List<SessionFormatted> listSessionFormatted = new List<SessionFormatted>();
+            List<SessionFormatted> listSessionFormattedReverse = new List<SessionFormatted>();
 
             TimeSpan totalSpan = new TimeSpan(0);
             foreach (var item in todaySessions)
@@ -275,11 +276,25 @@ namespace Alarm_clock
                 };
 
                 listSessionFormatted.Add(sessionFormatted);
+            }           
+
+            for (int i = listSessionFormatted.Count - 1; i>= 0;i--)
+            {
+                var item = listSessionFormatted[i];
+
+                SessionFormatted sessionFormatted = new SessionFormatted()
+                {
+                    SessionStart = item.SessionStart,
+                    SessionEnd = item.SessionEnd,
+                    TotalSession = item.TotalSession
+                };
+                listSessionFormattedReverse.Add(sessionFormatted);
             }
-            
-            dataGridView1.DataSource = listSessionFormatted;
+
+
+            dataGridView1.DataSource = listSessionFormattedReverse;
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = listSessionFormatted;
+            dataGridView1.DataSource = listSessionFormattedReverse;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
 
