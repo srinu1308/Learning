@@ -55,6 +55,8 @@
             this.labelRiskTime = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.Sincelbl = new System.Windows.Forms.Label();
+            this.lblSinceTxt = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -302,7 +304,7 @@
             this.labelRiskTime.AutoSize = true;
             this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelRiskTime.Location = new System.Drawing.Point(544, 284);
+            this.labelRiskTime.Location = new System.Drawing.Point(711, 284);
             this.labelRiskTime.Name = "labelRiskTime";
             this.labelRiskTime.Size = new System.Drawing.Size(71, 20);
             this.labelRiskTime.TabIndex = 23;
@@ -328,11 +330,34 @@
             this.label10.TabIndex = 25;
             this.label10.Text = "Min Session Break: 5mins";
             // 
+            // Sincelbl
+            // 
+            this.Sincelbl.AutoSize = true;
+            this.Sincelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sincelbl.Location = new System.Drawing.Point(544, 284);
+            this.Sincelbl.Name = "Sincelbl";
+            this.Sincelbl.Size = new System.Drawing.Size(53, 20);
+            this.Sincelbl.TabIndex = 26;
+            this.Sincelbl.Text = "Since:";
+            // 
+            // lblSinceTxt
+            // 
+            this.lblSinceTxt.AutoSize = true;
+            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblSinceTxt.Location = new System.Drawing.Point(598, 284);
+            this.lblSinceTxt.Name = "lblSinceTxt";
+            this.lblSinceTxt.Size = new System.Drawing.Size(93, 20);
+            this.lblSinceTxt.TabIndex = 27;
+            this.lblSinceTxt.Text = "00:00:00 00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 629);
+            this.Controls.Add(this.lblSinceTxt);
+            this.Controls.Add(this.Sincelbl);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.labelRiskTime);
@@ -395,6 +420,8 @@
         private System.Windows.Forms.Label labelRiskTime;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label Sincelbl;
+        private System.Windows.Forms.Label lblSinceTxt;
     }
 }
 

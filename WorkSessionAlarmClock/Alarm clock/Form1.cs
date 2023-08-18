@@ -26,6 +26,8 @@ namespace Alarm_clock
         private bool isSessionStarted = false;
         private int totalElapses = 0;
 
+        private DateTime NonBreakStartTime { get; set; }
+
         public Form1()
         {
             InitializeComponent();
@@ -137,6 +139,7 @@ namespace Alarm_clock
 
                     TimeSpan riskTime = getRiskTime();
                     labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+                    lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
                 }));
 
                 try
@@ -176,7 +179,8 @@ namespace Alarm_clock
                         soundPlayer.Stop();
                     }
 
-                    TimeSpan riskTime = getRiskTime();                    
+                    TimeSpan riskTime = getRiskTime();
+                    lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
@@ -226,6 +230,7 @@ namespace Alarm_clock
 
             TimeSpan riskTime = getRiskTime();
             labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
         }
 
         private void txtboxSessionTime_TextChanged(object sender, EventArgs e)
@@ -291,6 +296,7 @@ namespace Alarm_clock
 
             TimeSpan riskTime = getRiskTime();
             labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
+            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
         }
 
 
@@ -353,7 +359,9 @@ namespace Alarm_clock
                 {
                     lastSession = item;                    
                     firstTimeSpan = lastSession.SessionEnd - lastSession.SessionStart;
-                    riskTime = riskTime + firstTimeSpan;                                            
+                    riskTime = riskTime + firstTimeSpan;
+
+                    NonBreakStartTime = lastSession.SessionStart;
                     continue;
                 }
 
@@ -367,6 +375,8 @@ namespace Alarm_clock
                 {
                     TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                     riskTime = riskTime + currentDifference;
+
+                    NonBreakStartTime = item.SessionStart;
                 }
                 else
                 {
