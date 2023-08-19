@@ -27,6 +27,7 @@ namespace Alarm_clock
         private int totalElapses = 0;
 
         private DateTime NonBreakStartTime { get; set; }
+        private DateTime LastSessionEndTime { get; set; }
 
         public Form1()
         {
@@ -124,6 +125,9 @@ namespace Alarm_clock
                 addSession(session);
                 isSessionStarted = false;
 
+                LastSessionEndTime = session.SessionEnd;
+                
+
                 this.Invoke(new Action(() =>
                 {
                     lblStatus.Text = "Session is ended. Take Break";
@@ -140,6 +144,7 @@ namespace Alarm_clock
                     TimeSpan riskTime = getRiskTime();
                     labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
                     lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+                    lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
                 }));
 
                 try
@@ -181,6 +186,7 @@ namespace Alarm_clock
 
                     TimeSpan riskTime = getRiskTime();
                     lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+                    lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
@@ -218,6 +224,7 @@ namespace Alarm_clock
             //MessageBox.Show("Your timer is stopped", "Stopping...");
             lblStatus.Text = "Session is ended. Take Break";
 
+            LastSessionEndTime = session.SessionEnd;
 
             TimeSpan totalSpan = new TimeSpan(0);
             foreach (var item in todaySessions)
@@ -231,6 +238,7 @@ namespace Alarm_clock
             TimeSpan riskTime = getRiskTime();
             labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
             lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+            lblLastSessionEndTime.Text= LastSessionEndTime.ToString("hh:mm:ss tt");
         }
 
         private void txtboxSessionTime_TextChanged(object sender, EventArgs e)
@@ -297,6 +305,7 @@ namespace Alarm_clock
             TimeSpan riskTime = getRiskTime();
             labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
             lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+            lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
         }
 
 

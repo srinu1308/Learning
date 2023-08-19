@@ -56,6 +56,8 @@
             this.lblSinceTxt = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblLastSessionEndTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,7 +156,7 @@
             this.buttonRefresh.Location = new System.Drawing.Point(241, 205);
             this.buttonRefresh.Margin = new System.Windows.Forms.Padding(2);
             this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(139, 37);
+            this.buttonRefresh.Size = new System.Drawing.Size(144, 37);
             this.buttonRefresh.TabIndex = 10;
             this.buttonRefresh.Text = "RefreshTimes";
             this.buttonRefresh.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -167,7 +169,7 @@
             this.btnAllSessions.Location = new System.Drawing.Point(707, 205);
             this.btnAllSessions.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllSessions.Name = "btnAllSessions";
-            this.btnAllSessions.Size = new System.Drawing.Size(192, 37);
+            this.btnAllSessions.Size = new System.Drawing.Size(203, 37);
             this.btnAllSessions.TabIndex = 12;
             this.btnAllSessions.Text = "Show All Sessions";
             this.btnAllSessions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -200,7 +202,7 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(658, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(450, 293);
             this.dataGridView1.TabIndex = 13;
             // 
             // label6
@@ -209,9 +211,9 @@
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(237, 254);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(143, 20);
+            this.label6.Size = new System.Drawing.Size(148, 20);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Total Time Elapses";
+            this.label6.Text = "Total Timer Elapses";
             // 
             // labelTotalElapses
             // 
@@ -272,14 +274,14 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(544, 254);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(335, 20);
+            this.label3.Size = new System.Drawing.Size(366, 20);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Previous Non-Break Session Time : From Time";
+            this.label3.Text = "Total Previous Non-Break Session Time:From Time";
             // 
             // labelRiskTime
             // 
             this.labelRiskTime.AutoSize = true;
-            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelRiskTime.Location = new System.Drawing.Point(544, 274);
             this.labelRiskTime.Name = "labelRiskTime";
@@ -310,7 +312,7 @@
             // lblSinceTxt
             // 
             this.lblSinceTxt.AutoSize = true;
-            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblSinceTxt.Location = new System.Drawing.Point(703, 274);
             this.lblSinceTxt.Name = "lblSinceTxt";
@@ -340,11 +342,34 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Total Session Time";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(703, 306);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(176, 20);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Last Session End Time:";
+            // 
+            // lblLastSessionEndTime
+            // 
+            this.lblLastSessionEndTime.AutoSize = true;
+            this.lblLastSessionEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastSessionEndTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblLastSessionEndTime.Location = new System.Drawing.Point(703, 326);
+            this.lblLastSessionEndTime.Name = "lblLastSessionEndTime";
+            this.lblLastSessionEndTime.Size = new System.Drawing.Size(93, 20);
+            this.lblLastSessionEndTime.TabIndex = 29;
+            this.lblLastSessionEndTime.Text = "00:00:00 00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 629);
+            this.ClientSize = new System.Drawing.Size(1007, 629);
+            this.Controls.Add(this.lblLastSessionEndTime);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.labelTotalElapses);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblSinceTxt);
@@ -409,6 +434,8 @@
         private System.Windows.Forms.Label lblSinceTxt;
         private System.Windows.Forms.Label labelTotal;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblLastSessionEndTime;
     }
 }
 
