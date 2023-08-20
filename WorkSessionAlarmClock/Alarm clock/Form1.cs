@@ -93,7 +93,7 @@ namespace Alarm_clock
 
             if(elapsedTime > sessionTotalTime)
             {
-                MessageBox.Show("Total Session Time should be greater than Timer Elapsed Time",
+                MessageBox.Show("Total Session Time should be greater than or Equal to Timer Elapsed Time",
                         "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
 
                 return;
