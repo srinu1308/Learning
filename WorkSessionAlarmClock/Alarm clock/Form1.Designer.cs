@@ -64,8 +64,10 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.CustomFormat = "hh:mm:ss tt";
+            this.dateTimePicker1.Enabled = false;
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker1.Location = new System.Drawing.Point(241, 13);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
@@ -130,9 +132,10 @@
             // dateTimePickerTimerEnds
             // 
             this.dateTimePickerTimerEnds.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerTimerEnds.CustomFormat = "hh:mm:ss tt";
             this.dateTimePickerTimerEnds.Enabled = false;
             this.dateTimePickerTimerEnds.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerTimerEnds.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerTimerEnds.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerTimerEnds.Location = new System.Drawing.Point(241, 90);
             this.dateTimePickerTimerEnds.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTimerEnds.Name = "dateTimePickerTimerEnds";
@@ -281,7 +284,7 @@
             // labelRiskTime
             // 
             this.labelRiskTime.AutoSize = true;
-            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelRiskTime.Location = new System.Drawing.Point(544, 274);
             this.labelRiskTime.Name = "labelRiskTime";
@@ -312,7 +315,7 @@
             // lblSinceTxt
             // 
             this.lblSinceTxt.AutoSize = true;
-            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblSinceTxt.Location = new System.Drawing.Point(703, 274);
             this.lblSinceTxt.Name = "lblSinceTxt";

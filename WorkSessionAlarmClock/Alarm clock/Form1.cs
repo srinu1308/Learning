@@ -28,6 +28,7 @@ namespace Alarm_clock
 
         private DateTime NonBreakStartTime { get; set; }
         private DateTime LastSessionEndTime { get; set; }
+        public int elapsedTime { get; set; }
 
         public Form1()
         {
@@ -45,14 +46,19 @@ namespace Alarm_clock
             {
                 timerElapseTime = 1;
                 textBoxTimerElapsedTime.Text = timerElapseTime.ToString();
+
+                elapsedTime = timerElapseTime;
+
                 timerElapseTime = timerElapseTime * minutesMilliSeconds;
             }
             else
             {
+                elapsedTime = timerElapseTime;
+
                 textBoxTimerElapsedTime.Text = timerElapseTime.ToString();
                 // we read in minutes
                 timerElapseTime = timerElapseTime*minutesMilliSeconds;
-            }
+            }            
 
             todaySessions = new List<Session>();
             timer = new System.Timers.Timer();
@@ -84,6 +90,14 @@ namespace Alarm_clock
             }
 
             buttonRefresh_Click(sender, e);
+
+            if(elapsedTime > sessionTotalTime)
+            {
+                MessageBox.Show("Total Session Time should be greater than Timer Elapsed Time",
+                        "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+
+                return;
+            }
 
             timer.Start();
             //MessageBox.Show("Your timer is started","Starting...");
