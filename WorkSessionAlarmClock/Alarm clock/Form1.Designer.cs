@@ -293,11 +293,11 @@
             // labelRiskTime
             // 
             this.labelRiskTime.AutoSize = true;
-            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
+            this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelRiskTime.Location = new System.Drawing.Point(544, 274);
             this.labelRiskTime.Name = "labelRiskTime";
-            this.labelRiskTime.Size = new System.Drawing.Size(71, 20);
+            this.labelRiskTime.Size = new System.Drawing.Size(79, 20);
             this.labelRiskTime.TabIndex = 23;
             this.labelRiskTime.Text = "00:00:00";
             // 
@@ -325,7 +325,7 @@
             // 
             this.lblSinceTxt.AutoSize = true;
             this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSinceTxt.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblSinceTxt.Location = new System.Drawing.Point(738, 274);
             this.lblSinceTxt.Name = "lblSinceTxt";
             this.lblSinceTxt.Size = new System.Drawing.Size(93, 20);
@@ -335,7 +335,7 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelTotal.Location = new System.Drawing.Point(396, 274);
             this.labelTotal.Name = "labelTotal";
@@ -368,7 +368,7 @@
             // 
             this.lblLastSessionEndTime.AutoSize = true;
             this.lblLastSessionEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastSessionEndTime.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblLastSessionEndTime.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblLastSessionEndTime.Location = new System.Drawing.Point(738, 326);
             this.lblLastSessionEndTime.Name = "lblLastSessionEndTime";
             this.lblLastSessionEndTime.Size = new System.Drawing.Size(93, 20);
@@ -431,7 +431,7 @@
             // labelTotalTimeSpent
             // 
             this.labelTotalTimeSpent.AutoSize = true;
-            this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalTimeSpent.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelTotalTimeSpent.Location = new System.Drawing.Point(880, 552);
             this.labelTotalTimeSpent.Name = "labelTotalTimeSpent";
@@ -452,7 +452,7 @@
             // lablePreviousSessionBreak
             // 
             this.lablePreviousSessionBreak.AutoSize = true;
-            this.lablePreviousSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lablePreviousSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lablePreviousSessionBreak.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 400);
             this.lablePreviousSessionBreak.Name = "lablePreviousSessionBreak";
