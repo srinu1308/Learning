@@ -324,18 +324,18 @@
             // lblSinceTxt
             // 
             this.lblSinceTxt.AutoSize = true;
-            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblSinceTxt.Location = new System.Drawing.Point(738, 274);
             this.lblSinceTxt.Name = "lblSinceTxt";
-            this.lblSinceTxt.Size = new System.Drawing.Size(93, 20);
+            this.lblSinceTxt.Size = new System.Drawing.Size(104, 20);
             this.lblSinceTxt.TabIndex = 27;
             this.lblSinceTxt.Text = "00:00:00 00";
             // 
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelTotal.Location = new System.Drawing.Point(396, 274);
             this.labelTotal.Name = "labelTotal";
@@ -431,7 +431,7 @@
             // labelTotalTimeSpent
             // 
             this.labelTotalTimeSpent.AutoSize = true;
-            this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalTimeSpent.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelTotalTimeSpent.Location = new System.Drawing.Point(880, 552);
             this.labelTotalTimeSpent.Name = "labelTotalTimeSpent";
