@@ -58,6 +58,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.lblLastSessionEndTime = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.labelDayStartTime = new System.Windows.Forms.Label();
+            this.labelDayEndTime = new System.Windows.Forms.Label();
+            this.labelTotalTimeSpent = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lablePreviousSessionBreak = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +102,7 @@
             this.stopButton.Location = new System.Drawing.Point(548, 205);
             this.stopButton.Margin = new System.Windows.Forms.Padding(2);
             this.stopButton.Name = "stopButton";
-            this.stopButton.Size = new System.Drawing.Size(143, 37);
+            this.stopButton.Size = new System.Drawing.Size(181, 37);
             this.stopButton.TabIndex = 2;
             this.stopButton.Text = "Stop Session";
             this.stopButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -169,10 +178,10 @@
             // btnAllSessions
             // 
             this.btnAllSessions.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAllSessions.Location = new System.Drawing.Point(707, 205);
+            this.btnAllSessions.Location = new System.Drawing.Point(742, 205);
             this.btnAllSessions.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllSessions.Name = "btnAllSessions";
-            this.btnAllSessions.Size = new System.Drawing.Size(203, 37);
+            this.btnAllSessions.Size = new System.Drawing.Size(231, 37);
             this.btnAllSessions.TabIndex = 12;
             this.btnAllSessions.Text = "Show All Sessions";
             this.btnAllSessions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -205,7 +214,7 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView1.Size = new System.Drawing.Size(450, 293);
+            this.dataGridView1.Size = new System.Drawing.Size(488, 293);
             this.dataGridView1.TabIndex = 13;
             // 
             // label6
@@ -277,15 +286,15 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(544, 254);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(366, 20);
+            this.label3.Size = new System.Drawing.Size(185, 20);
             this.label3.TabIndex = 22;
-            this.label3.Text = "Total Previous Non-Break Session Time:From Time";
+            this.label3.Text = "Non-Break Working Time";
             // 
             // labelRiskTime
             // 
             this.labelRiskTime.AutoSize = true;
             this.labelRiskTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
             this.labelRiskTime.Location = new System.Drawing.Point(544, 274);
             this.labelRiskTime.Name = "labelRiskTime";
             this.labelRiskTime.Size = new System.Drawing.Size(71, 20);
@@ -296,7 +305,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(703, 96);
+            this.label4.Location = new System.Drawing.Point(738, 95);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 20);
             this.label4.TabIndex = 24;
@@ -306,7 +315,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(703, 135);
+            this.label10.Location = new System.Drawing.Point(738, 135);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(191, 20);
             this.label10.TabIndex = 25;
@@ -316,8 +325,8 @@
             // 
             this.lblSinceTxt.AutoSize = true;
             this.lblSinceTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSinceTxt.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblSinceTxt.Location = new System.Drawing.Point(703, 274);
+            this.lblSinceTxt.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblSinceTxt.Location = new System.Drawing.Point(738, 274);
             this.lblSinceTxt.Name = "lblSinceTxt";
             this.lblSinceTxt.Size = new System.Drawing.Size(93, 20);
             this.lblSinceTxt.TabIndex = 27;
@@ -326,11 +335,11 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotal.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelTotal.Location = new System.Drawing.Point(396, 274);
             this.labelTotal.Name = "labelTotal";
-            this.labelTotal.Size = new System.Drawing.Size(71, 20);
+            this.labelTotal.Size = new System.Drawing.Size(79, 20);
             this.labelTotal.TabIndex = 15;
             this.labelTotal.Text = "00:00:00";
             this.labelTotal.Click += new System.EventHandler(this.labelTotal_Click);
@@ -349,28 +358,132 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(703, 306);
+            this.label11.Location = new System.Drawing.Point(738, 306);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(176, 20);
+            this.label11.Size = new System.Drawing.Size(145, 20);
             this.label11.TabIndex = 28;
-            this.label11.Text = "Last Session End Time:";
+            this.label11.Text = "Non-Break To Time";
             // 
             // lblLastSessionEndTime
             // 
             this.lblLastSessionEndTime.AutoSize = true;
             this.lblLastSessionEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastSessionEndTime.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblLastSessionEndTime.Location = new System.Drawing.Point(703, 326);
+            this.lblLastSessionEndTime.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lblLastSessionEndTime.Location = new System.Drawing.Point(738, 326);
             this.lblLastSessionEndTime.Name = "lblLastSessionEndTime";
             this.lblLastSessionEndTime.Size = new System.Drawing.Size(93, 20);
             this.lblLastSessionEndTime.TabIndex = 29;
             this.lblLastSessionEndTime.Text = "00:00:00 00";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(738, 496);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(136, 20);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Day Started Time:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(738, 522);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(130, 20);
+            this.label13.TabIndex = 31;
+            this.label13.Text = "Day Ended Time:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(738, 552);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(133, 20);
+            this.label14.TabIndex = 32;
+            this.label14.Text = "Total Time Spent:";
+            // 
+            // labelDayStartTime
+            // 
+            this.labelDayStartTime.AutoSize = true;
+            this.labelDayStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDayStartTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelDayStartTime.Location = new System.Drawing.Point(880, 496);
+            this.labelDayStartTime.Name = "labelDayStartTime";
+            this.labelDayStartTime.Size = new System.Drawing.Size(93, 20);
+            this.labelDayStartTime.TabIndex = 33;
+            this.labelDayStartTime.Text = "00:00:00 00";
+            // 
+            // labelDayEndTime
+            // 
+            this.labelDayEndTime.AutoSize = true;
+            this.labelDayEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDayEndTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelDayEndTime.Location = new System.Drawing.Point(880, 522);
+            this.labelDayEndTime.Name = "labelDayEndTime";
+            this.labelDayEndTime.Size = new System.Drawing.Size(93, 20);
+            this.labelDayEndTime.TabIndex = 34;
+            this.labelDayEndTime.Text = "00:00:00 00";
+            this.labelDayEndTime.Click += new System.EventHandler(this.labelDayEndTime_Click);
+            // 
+            // labelTotalTimeSpent
+            // 
+            this.labelTotalTimeSpent.AutoSize = true;
+            this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalTimeSpent.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.labelTotalTimeSpent.Location = new System.Drawing.Point(880, 552);
+            this.labelTotalTimeSpent.Name = "labelTotalTimeSpent";
+            this.labelTotalTimeSpent.Size = new System.Drawing.Size(79, 20);
+            this.labelTotalTimeSpent.TabIndex = 35;
+            this.labelTotalTimeSpent.Text = "00:00:00";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(738, 380);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(185, 20);
+            this.label15.TabIndex = 36;
+            this.label15.Text = "Last Session Break Time";
+            // 
+            // lablePreviousSessionBreak
+            // 
+            this.lablePreviousSessionBreak.AutoSize = true;
+            this.lablePreviousSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lablePreviousSessionBreak.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 400);
+            this.lablePreviousSessionBreak.Name = "lablePreviousSessionBreak";
+            this.lablePreviousSessionBreak.Size = new System.Drawing.Size(79, 20);
+            this.lablePreviousSessionBreak.TabIndex = 37;
+            this.lablePreviousSessionBreak.Text = "00:00:00";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(738, 254);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(164, 20);
+            this.label16.TabIndex = 38;
+            this.label16.Text = "Non-Break From Time";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 629);
+            this.ClientSize = new System.Drawing.Size(1057, 629);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lablePreviousSessionBreak);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.labelTotalTimeSpent);
+            this.Controls.Add(this.labelDayEndTime);
+            this.Controls.Add(this.labelDayStartTime);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.lblLastSessionEndTime);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.labelTotalElapses);
@@ -439,6 +552,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblLastSessionEndTime;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelDayStartTime;
+        private System.Windows.Forms.Label labelDayEndTime;
+        private System.Windows.Forms.Label labelTotalTimeSpent;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lablePreviousSessionBreak;
+        private System.Windows.Forms.Label label16;
     }
 }
 

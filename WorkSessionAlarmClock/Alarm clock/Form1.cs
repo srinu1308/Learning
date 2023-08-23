@@ -104,6 +104,12 @@ namespace Alarm_clock
             lblStatus.Text = "Session is started";
 
             isSessionStarted = true;
+
+            if (isSessionStarted && todaySessions.Count >= 1)
+            {
+                UpdateLastSessionBreak(todaySessions[todaySessions.Count - 1].SessionEnd, DateTime.Now);
+            }
+
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -159,6 +165,8 @@ namespace Alarm_clock
                     labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
                     lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
                     lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+
+                    UpdateDayDetails();
                 }));
 
                 try
@@ -253,6 +261,8 @@ namespace Alarm_clock
             labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
             lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
             lblLastSessionEndTime.Text= LastSessionEndTime.ToString("hh:mm:ss tt");
+
+            UpdateDayDetails();
         }
 
         private void txtboxSessionTime_TextChanged(object sender, EventArgs e)
@@ -320,6 +330,13 @@ namespace Alarm_clock
             labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
             lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
             lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+
+            UpdateDayDetails();
+
+            if(!isSessionStarted && todaySessions.Count >=1)
+            {
+                UpdateLastSessionBreak(todaySessions[todaySessions.Count - 1].SessionEnd, DateTime.Now);
+            }
         }
 
 
@@ -444,6 +461,37 @@ namespace Alarm_clock
         private void labelTotal_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void labelDayEndTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UpdateDayDetails()
+        {
+            if (todaySessions.Count >= 1)
+            {
+                labelDayStartTime.Text = todaySessions[0].SessionStart.ToString("hh:mm:ss tt");
+
+                if (todaySessions.Count >= 2)
+                {
+                    labelDayEndTime.Text = todaySessions[todaySessions.Count - 1].SessionEnd.ToString("hh:mm:ss tt");
+
+                    var dayStartTime = todaySessions[0].SessionStart;
+                    var dayEndTime = todaySessions[todaySessions.Count - 1].SessionEnd;
+                    var totalTimeSpent = dayEndTime - dayStartTime;
+
+                    labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
+                }
+            }
+        }
+
+        private void UpdateLastSessionBreak(DateTime initialTime,DateTime endTime)
+        {
+            var timeDifference = initialTime - endTime;
+
+            lablePreviousSessionBreak.Text= timeDifference.ToString(@"hh\:mm\:ss");
         }
     }
 }
