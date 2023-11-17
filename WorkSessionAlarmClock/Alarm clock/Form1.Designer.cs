@@ -67,6 +67,9 @@
             this.label15 = new System.Windows.Forms.Label();
             this.lablePreviousSessionBreak = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
+            this.btnSetNextLargeSessionBreak = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.lblNextLargeBreak = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -181,7 +184,7 @@
             this.btnAllSessions.Location = new System.Drawing.Point(742, 205);
             this.btnAllSessions.Margin = new System.Windows.Forms.Padding(2);
             this.btnAllSessions.Name = "btnAllSessions";
-            this.btnAllSessions.Size = new System.Drawing.Size(231, 37);
+            this.btnAllSessions.Size = new System.Drawing.Size(181, 37);
             this.btnAllSessions.TabIndex = 12;
             this.btnAllSessions.Text = "Show All Sessions";
             this.btnAllSessions.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -443,7 +446,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(738, 380);
+            this.label15.Location = new System.Drawing.Point(738, 355);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(185, 20);
             this.label15.TabIndex = 36;
@@ -454,7 +457,7 @@
             this.lablePreviousSessionBreak.AutoSize = true;
             this.lablePreviousSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lablePreviousSessionBreak.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 400);
+            this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 375);
             this.lablePreviousSessionBreak.Name = "lablePreviousSessionBreak";
             this.lablePreviousSessionBreak.Size = new System.Drawing.Size(79, 20);
             this.lablePreviousSessionBreak.TabIndex = 37;
@@ -470,11 +473,48 @@
             this.label16.TabIndex = 38;
             this.label16.Text = "Non-Break From Time";
             // 
+            // btnSetNextLargeSessionBreak
+            // 
+            this.btnSetNextLargeSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetNextLargeSessionBreak.Location = new System.Drawing.Point(927, 205);
+            this.btnSetNextLargeSessionBreak.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSetNextLargeSessionBreak.Name = "btnSetNextLargeSessionBreak";
+            this.btnSetNextLargeSessionBreak.Size = new System.Drawing.Size(207, 37);
+            this.btnSetNextLargeSessionBreak.TabIndex = 39;
+            this.btnSetNextLargeSessionBreak.Text = "Next Large Break Calc";
+            this.btnSetNextLargeSessionBreak.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetNextLargeSessionBreak.UseVisualStyleBackColor = true;
+            this.btnSetNextLargeSessionBreak.Click += new System.EventHandler(this.btnSetNextLargeSessionBreak_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(738, 426);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(209, 20);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Next Large Break Start Time";
+            // 
+            // lblNextLargeBreak
+            // 
+            this.lblNextLargeBreak.AutoSize = true;
+            this.lblNextLargeBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNextLargeBreak.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblNextLargeBreak.Location = new System.Drawing.Point(738, 446);
+            this.lblNextLargeBreak.Name = "lblNextLargeBreak";
+            this.lblNextLargeBreak.Size = new System.Drawing.Size(79, 20);
+            this.lblNextLargeBreak.TabIndex = 41;
+            this.lblNextLargeBreak.Text = "00:00:00";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 629);
+            this.ClientSize = new System.Drawing.Size(1142, 629);
+            this.Controls.Add(this.lblNextLargeBreak);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.btnSetNextLargeSessionBreak);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.lablePreviousSessionBreak);
             this.Controls.Add(this.label15);
@@ -561,6 +601,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label lablePreviousSessionBreak;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Button btnSetNextLargeSessionBreak;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label lblNextLargeBreak;
     }
 }
 

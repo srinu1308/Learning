@@ -493,5 +493,15 @@ namespace Alarm_clock
 
             lablePreviousSessionBreak.Text= timeDifference.ToString(@"hh\:mm\:ss");
         }
+
+        private void btnSetNextLargeSessionBreak_Click(object sender, EventArgs e)
+        {
+            int defaultLargeBreakElapsedTime = 60;
+            bool isSuccess = int.TryParse(ConfigurationManager.AppSettings["NextLargeBreakElapsedTime"], out defaultLargeBreakElapsedTime);
+
+            DateTime resultDateTime = DateTime.Now.AddMinutes(defaultLargeBreakElapsedTime);
+
+            lblNextLargeBreak.Text = resultDateTime.ToString(@"hh\:mm\:ss tt");
+        }
     }
 }
