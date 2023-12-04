@@ -503,5 +503,17 @@ namespace Alarm_clock
 
             lblNextLargeBreak.Text = resultDateTime.ToString(@"hh\:mm\:ss tt");
         }
+
+        private void btn10Minutes_Click(object sender, EventArgs e)
+        {
+            txtboxSessionTime.Text = "10";
+            startButton_Click(sender, e);
+        }
+
+        private void btn5Minutes_Click(object sender, EventArgs e)
+        {
+            txtboxSessionTime.Text = "5";
+            startButton_Click(sender, e);
+        }
     }
 }

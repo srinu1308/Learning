@@ -70,6 +70,8 @@
             this.btnSetNextLargeSessionBreak = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.lblNextLargeBreak = new System.Windows.Forms.Label();
+            this.btn10Minutes = new System.Windows.Forms.Button();
+            this.btn5Minutes = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -308,7 +310,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(738, 95);
+            this.label4.Location = new System.Drawing.Point(738, 59);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(196, 20);
             this.label4.TabIndex = 24;
@@ -318,7 +320,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(738, 135);
+            this.label10.Location = new System.Drawing.Point(738, 96);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(191, 20);
             this.label10.TabIndex = 25;
@@ -507,11 +509,39 @@
             this.lblNextLargeBreak.TabIndex = 41;
             this.lblNextLargeBreak.Text = "00:00:00";
             // 
+            // btn10Minutes
+            // 
+            this.btn10Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn10Minutes.Location = new System.Drawing.Point(742, 155);
+            this.btn10Minutes.Margin = new System.Windows.Forms.Padding(2);
+            this.btn10Minutes.Name = "btn10Minutes";
+            this.btn10Minutes.Size = new System.Drawing.Size(181, 37);
+            this.btn10Minutes.TabIndex = 42;
+            this.btn10Minutes.Text = "10 Min Session";
+            this.btn10Minutes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn10Minutes.UseVisualStyleBackColor = true;
+            this.btn10Minutes.Click += new System.EventHandler(this.btn10Minutes_Click);
+            // 
+            // btn5Minutes
+            // 
+            this.btn5Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn5Minutes.Location = new System.Drawing.Point(927, 155);
+            this.btn5Minutes.Margin = new System.Windows.Forms.Padding(2);
+            this.btn5Minutes.Name = "btn5Minutes";
+            this.btn5Minutes.Size = new System.Drawing.Size(207, 37);
+            this.btn5Minutes.TabIndex = 43;
+            this.btn5Minutes.Text = "5 Min Session";
+            this.btn5Minutes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn5Minutes.UseVisualStyleBackColor = true;
+            this.btn5Minutes.Click += new System.EventHandler(this.btn5Minutes_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1142, 629);
+            this.Controls.Add(this.btn5Minutes);
+            this.Controls.Add(this.btn10Minutes);
             this.Controls.Add(this.lblNextLargeBreak);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.btnSetNextLargeSessionBreak);
@@ -604,6 +634,8 @@
         private System.Windows.Forms.Button btnSetNextLargeSessionBreak;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblNextLargeBreak;
+        private System.Windows.Forms.Button btn10Minutes;
+        private System.Windows.Forms.Button btn5Minutes;
     }
 }
 
