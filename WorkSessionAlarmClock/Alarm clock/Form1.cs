@@ -105,6 +105,12 @@ namespace Alarm_clock
 
             isSessionStarted = true;
 
+            if(todaySessions.Count == 0)
+            {
+                // if first session
+                btnSetNextLargeSessionBreak_Click(sender, e);
+            }
+
             if (isSessionStarted && todaySessions.Count >= 1)
             {
                 UpdateLastSessionBreak(todaySessions[todaySessions.Count - 1].SessionEnd, DateTime.Now);
@@ -166,7 +172,8 @@ namespace Alarm_clock
                     lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
                     lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
 
-                    UpdateDayDetails();
+                    //UpdateDayDetails();
+                    btnAllSessions_Click(sender, e);
                 }));
 
                 try
@@ -262,7 +269,8 @@ namespace Alarm_clock
             lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
             lblLastSessionEndTime.Text= LastSessionEndTime.ToString("hh:mm:ss tt");
 
-            UpdateDayDetails();
+            //UpdateDayDetails();
+            btnAllSessions_Click(sender, e);
         }
 
         private void txtboxSessionTime_TextChanged(object sender, EventArgs e)
@@ -474,16 +482,21 @@ namespace Alarm_clock
             {
                 labelDayStartTime.Text = todaySessions[0].SessionStart.ToString("hh:mm:ss tt");
 
-                if (todaySessions.Count >= 2)
-                {
-                    labelDayEndTime.Text = todaySessions[todaySessions.Count - 1].SessionEnd.ToString("hh:mm:ss tt");
+                //if (todaySessions.Count >= 2)
+                //{
+                //labelDayEndTime.Text = todaySessions[todaySessions.Count - 1].SessionEnd.ToString("hh:mm:ss tt");
 
-                    var dayStartTime = todaySessions[0].SessionStart;
-                    var dayEndTime = todaySessions[todaySessions.Count - 1].SessionEnd;
-                    var totalTimeSpent = dayEndTime - dayStartTime;
+                var currentTimeNow = DateTime.Now;
 
-                    labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
-                }
+                labelDayEndTime.Text = currentTimeNow.ToString("hh:mm:ss tt");
+
+                var dayStartTime = todaySessions[0].SessionStart;
+                //var dayEndTime = todaySessions[todaySessions.Count - 1].SessionEnd;
+                var dayEndTime = currentTimeNow;
+                var totalTimeSpent = dayEndTime - dayStartTime;
+
+                labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
+                //}
             }
         }
 

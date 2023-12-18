@@ -85,7 +85,7 @@
             this.dateTimePicker1.Location = new System.Drawing.Point(241, 13);
             this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(450, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(302, 26);
             this.dateTimePicker1.TabIndex = 0;
             // 
             // startButton
@@ -129,7 +129,7 @@
             this.txtboxSessionTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtboxSessionTime.Location = new System.Drawing.Point(241, 53);
             this.txtboxSessionTime.Name = "txtboxSessionTime";
-            this.txtboxSessionTime.Size = new System.Drawing.Size(450, 26);
+            this.txtboxSessionTime.Size = new System.Drawing.Size(302, 26);
             this.txtboxSessionTime.TabIndex = 5;
             this.txtboxSessionTime.Text = "45";
             // 
@@ -153,7 +153,7 @@
             this.dateTimePickerTimerEnds.Location = new System.Drawing.Point(241, 90);
             this.dateTimePickerTimerEnds.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerTimerEnds.Name = "dateTimePickerTimerEnds";
-            this.dateTimePickerTimerEnds.Size = new System.Drawing.Size(450, 26);
+            this.dateTimePickerTimerEnds.Size = new System.Drawing.Size(302, 26);
             this.dateTimePickerTimerEnds.TabIndex = 7;
             // 
             // lblStatus
@@ -269,7 +269,7 @@
             this.textBoxTimerElapsedTime.Location = new System.Drawing.Point(241, 129);
             this.textBoxTimerElapsedTime.Name = "textBoxTimerElapsedTime";
             this.textBoxTimerElapsedTime.ReadOnly = true;
-            this.textBoxTimerElapsedTime.Size = new System.Drawing.Size(450, 26);
+            this.textBoxTimerElapsedTime.Size = new System.Drawing.Size(302, 26);
             this.textBoxTimerElapsedTime.TabIndex = 20;
             this.textBoxTimerElapsedTime.Text = "1";
             // 
@@ -310,21 +310,21 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(738, 59);
+            this.label4.Location = new System.Drawing.Point(549, 59);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(196, 20);
+            this.label4.Size = new System.Drawing.Size(176, 20);
             this.label4.TabIndex = 24;
-            this.label4.Text = "Max Session Time: 45mins";
+            this.label4.Text = "Max Session Time: 45m";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(738, 96);
+            this.label10.Location = new System.Drawing.Point(549, 96);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(191, 20);
+            this.label10.Size = new System.Drawing.Size(171, 20);
             this.label10.TabIndex = 25;
-            this.label10.Text = "Min Session Break: 5mins";
+            this.label10.Text = "Min Session Break: 5m";
             // 
             // lblSinceTxt
             // 
@@ -478,12 +478,12 @@
             // btnSetNextLargeSessionBreak
             // 
             this.btnSetNextLargeSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetNextLargeSessionBreak.Location = new System.Drawing.Point(927, 205);
+            this.btnSetNextLargeSessionBreak.Image = global::Alarm_clock.Properties.Resources.icon_refresh_24;
+            this.btnSetNextLargeSessionBreak.Location = new System.Drawing.Point(952, 422);
             this.btnSetNextLargeSessionBreak.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetNextLargeSessionBreak.Name = "btnSetNextLargeSessionBreak";
-            this.btnSetNextLargeSessionBreak.Size = new System.Drawing.Size(207, 37);
+            this.btnSetNextLargeSessionBreak.Size = new System.Drawing.Size(34, 28);
             this.btnSetNextLargeSessionBreak.TabIndex = 39;
-            this.btnSetNextLargeSessionBreak.Text = "Next Large Break Calc";
             this.btnSetNextLargeSessionBreak.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSetNextLargeSessionBreak.UseVisualStyleBackColor = true;
             this.btnSetNextLargeSessionBreak.Click += new System.EventHandler(this.btnSetNextLargeSessionBreak_Click);
@@ -512,7 +512,7 @@
             // btn10Minutes
             // 
             this.btn10Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn10Minutes.Location = new System.Drawing.Point(742, 155);
+            this.btn10Minutes.Location = new System.Drawing.Point(742, 96);
             this.btn10Minutes.Margin = new System.Windows.Forms.Padding(2);
             this.btn10Minutes.Name = "btn10Minutes";
             this.btn10Minutes.Size = new System.Drawing.Size(181, 37);
@@ -525,10 +525,10 @@
             // btn5Minutes
             // 
             this.btn5Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5Minutes.Location = new System.Drawing.Point(927, 155);
+            this.btn5Minutes.Location = new System.Drawing.Point(742, 53);
             this.btn5Minutes.Margin = new System.Windows.Forms.Padding(2);
             this.btn5Minutes.Name = "btn5Minutes";
-            this.btn5Minutes.Size = new System.Drawing.Size(207, 37);
+            this.btn5Minutes.Size = new System.Drawing.Size(181, 37);
             this.btn5Minutes.TabIndex = 43;
             this.btn5Minutes.Text = "5 Min Session";
             this.btn5Minutes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -539,7 +539,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1142, 629);
+            this.ClientSize = new System.Drawing.Size(1015, 629);
             this.Controls.Add(this.btn5Minutes);
             this.Controls.Add(this.btn10Minutes);
             this.Controls.Add(this.lblNextLargeBreak);

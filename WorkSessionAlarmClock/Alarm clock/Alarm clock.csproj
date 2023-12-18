@@ -94,10 +94,16 @@
     </Content>
     <Content Include="alarm_bell.ico" />
     <Content Include="Icon.ico" />
+    <Content Include="icon_refresh_24.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="moto_e4_oxygen.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="original_argon.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\icon_refresh_24.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="TimeAlarm.ico">
