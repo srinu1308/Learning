@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -72,6 +73,10 @@
             this.lblNextLargeBreak = new System.Windows.Forms.Label();
             this.btn10Minutes = new System.Windows.Forms.Button();
             this.btn5Minutes = new System.Windows.Forms.Button();
+            this.btnIncludeBreakSession = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.label18 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -384,7 +389,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(738, 496);
+            this.label12.Location = new System.Drawing.Point(738, 505);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(136, 20);
             this.label12.TabIndex = 30;
@@ -394,7 +399,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(738, 522);
+            this.label13.Location = new System.Drawing.Point(738, 535);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(130, 20);
             this.label13.TabIndex = 31;
@@ -404,7 +409,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(738, 552);
+            this.label14.Location = new System.Drawing.Point(738, 565);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(133, 20);
             this.label14.TabIndex = 32;
@@ -415,7 +420,7 @@
             this.labelDayStartTime.AutoSize = true;
             this.labelDayStartTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDayStartTime.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelDayStartTime.Location = new System.Drawing.Point(880, 496);
+            this.labelDayStartTime.Location = new System.Drawing.Point(880, 505);
             this.labelDayStartTime.Name = "labelDayStartTime";
             this.labelDayStartTime.Size = new System.Drawing.Size(93, 20);
             this.labelDayStartTime.TabIndex = 33;
@@ -426,7 +431,7 @@
             this.labelDayEndTime.AutoSize = true;
             this.labelDayEndTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDayEndTime.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelDayEndTime.Location = new System.Drawing.Point(880, 522);
+            this.labelDayEndTime.Location = new System.Drawing.Point(880, 535);
             this.labelDayEndTime.Name = "labelDayEndTime";
             this.labelDayEndTime.Size = new System.Drawing.Size(93, 20);
             this.labelDayEndTime.TabIndex = 34;
@@ -438,7 +443,7 @@
             this.labelTotalTimeSpent.AutoSize = true;
             this.labelTotalTimeSpent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTotalTimeSpent.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.labelTotalTimeSpent.Location = new System.Drawing.Point(880, 552);
+            this.labelTotalTimeSpent.Location = new System.Drawing.Point(880, 565);
             this.labelTotalTimeSpent.Name = "labelTotalTimeSpent";
             this.labelTotalTimeSpent.Size = new System.Drawing.Size(79, 20);
             this.labelTotalTimeSpent.TabIndex = 35;
@@ -448,7 +453,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(738, 355);
+            this.label15.Location = new System.Drawing.Point(738, 383);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(185, 20);
             this.label15.TabIndex = 36;
@@ -459,7 +464,7 @@
             this.lablePreviousSessionBreak.AutoSize = true;
             this.lablePreviousSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lablePreviousSessionBreak.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 375);
+            this.lablePreviousSessionBreak.Location = new System.Drawing.Point(738, 403);
             this.lablePreviousSessionBreak.Name = "lablePreviousSessionBreak";
             this.lablePreviousSessionBreak.Size = new System.Drawing.Size(79, 20);
             this.lablePreviousSessionBreak.TabIndex = 37;
@@ -477,14 +482,16 @@
             // 
             // btnSetNextLargeSessionBreak
             // 
-            this.btnSetNextLargeSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSetNextLargeSessionBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSetNextLargeSessionBreak.Image = global::Alarm_clock.Properties.Resources.icon_refresh_24;
-            this.btnSetNextLargeSessionBreak.Location = new System.Drawing.Point(952, 422);
+            this.btnSetNextLargeSessionBreak.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetNextLargeSessionBreak.Location = new System.Drawing.Point(929, 441);
             this.btnSetNextLargeSessionBreak.Margin = new System.Windows.Forms.Padding(2);
             this.btnSetNextLargeSessionBreak.Name = "btnSetNextLargeSessionBreak";
-            this.btnSetNextLargeSessionBreak.Size = new System.Drawing.Size(34, 28);
+            this.btnSetNextLargeSessionBreak.Size = new System.Drawing.Size(41, 31);
             this.btnSetNextLargeSessionBreak.TabIndex = 39;
             this.btnSetNextLargeSessionBreak.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetNextLargeSessionBreak.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSetNextLargeSessionBreak.UseVisualStyleBackColor = true;
             this.btnSetNextLargeSessionBreak.Click += new System.EventHandler(this.btnSetNextLargeSessionBreak_Click);
             // 
@@ -492,18 +499,18 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(738, 426);
+            this.label17.Location = new System.Drawing.Point(738, 441);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(209, 20);
+            this.label17.Size = new System.Drawing.Size(170, 20);
             this.label17.TabIndex = 40;
-            this.label17.Text = "Next Large Break Start Time";
+            this.label17.Text = "Next Large Break Time";
             // 
             // lblNextLargeBreak
             // 
             this.lblNextLargeBreak.AutoSize = true;
             this.lblNextLargeBreak.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNextLargeBreak.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lblNextLargeBreak.Location = new System.Drawing.Point(738, 446);
+            this.lblNextLargeBreak.Location = new System.Drawing.Point(738, 462);
             this.lblNextLargeBreak.Name = "lblNextLargeBreak";
             this.lblNextLargeBreak.Size = new System.Drawing.Size(79, 20);
             this.lblNextLargeBreak.TabIndex = 41;
@@ -535,11 +542,47 @@
             this.btn5Minutes.UseVisualStyleBackColor = true;
             this.btn5Minutes.Click += new System.EventHandler(this.btn5Minutes_Click);
             // 
+            // btnIncludeBreakSession
+            // 
+            this.btnIncludeBreakSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIncludeBreakSession.Image = global::Alarm_clock.Properties.Resources.PlusImage2;
+            this.btnIncludeBreakSession.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnIncludeBreakSession.Location = new System.Drawing.Point(929, 383);
+            this.btnIncludeBreakSession.Name = "btnIncludeBreakSession";
+            this.btnIncludeBreakSession.Size = new System.Drawing.Size(41, 40);
+            this.btnIncludeBreakSession.TabIndex = 44;
+            this.btnIncludeBreakSession.Tag = "Include Break into Session";
+            this.btnIncludeBreakSession.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnIncludeBreakSession.UseVisualStyleBackColor = true;
+            this.btnIncludeBreakSession.Click += new System.EventHandler(this.btnIncludeBreakSession_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip1.ToolTipTitle = "New Session";
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTip2.ToolTipTitle = "Refresh";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(855, 634);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(115, 20);
+            this.label18.TabIndex = 45;
+            this.label18.Text = "Srinu Vadapalli";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1015, 629);
+            this.ClientSize = new System.Drawing.Size(983, 663);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.btnIncludeBreakSession);
             this.Controls.Add(this.btn5Minutes);
             this.Controls.Add(this.btn10Minutes);
             this.Controls.Add(this.lblNextLargeBreak);
@@ -636,6 +679,10 @@
         private System.Windows.Forms.Label lblNextLargeBreak;
         private System.Windows.Forms.Button btn10Minutes;
         private System.Windows.Forms.Button btn5Minutes;
+        private System.Windows.Forms.Button btnIncludeBreakSession;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.Label label18;
     }
 }
 

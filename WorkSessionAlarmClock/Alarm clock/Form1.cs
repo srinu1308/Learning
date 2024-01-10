@@ -34,6 +34,8 @@ namespace Alarm_clock
         {
             InitializeComponent();
             this.Icon = Properties.Resources.TimeAlarm2;
+            this.toolTip1.SetToolTip(this.btnIncludeBreakSession, "Include Break in New Session");
+            this.toolTip2.SetToolTip(this.btnSetNextLargeSessionBreak, "Refresh Next Large Session Break");
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -167,10 +169,11 @@ namespace Alarm_clock
                     labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
                     labelTotalElapses.Text = totalElapses.ToString();
 
-                    TimeSpan riskTime = getRiskTime();
-                    labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
-                    lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
-                    lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+                    //TimeSpan riskTime = getRiskTime();
+                    //labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+                    //lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+                    //lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+                    updateRiskDetails();
 
                     //UpdateDayDetails();
                     btnAllSessions_Click(sender, e);
@@ -264,10 +267,11 @@ namespace Alarm_clock
             labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
             labelTotalElapses.Text = totalElapses.ToString();
 
-            TimeSpan riskTime = getRiskTime();
-            labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
-            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
-            lblLastSessionEndTime.Text= LastSessionEndTime.ToString("hh:mm:ss tt");
+            //TimeSpan riskTime = getRiskTime();
+            //labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+            //lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+            //lblLastSessionEndTime.Text= LastSessionEndTime.ToString("hh:mm:ss tt");
+            updateRiskDetails();
 
             //UpdateDayDetails();
             btnAllSessions_Click(sender, e);
@@ -334,10 +338,11 @@ namespace Alarm_clock
             labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
             labelTotalElapses.Text = totalElapses.ToString();
 
-            TimeSpan riskTime = getRiskTime();
-            labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
-            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
-            lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+            //TimeSpan riskTime = getRiskTime();
+            //labelRiskTime.Text= riskTime.ToString(@"hh\:mm\:ss");
+            //lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+            //lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+            updateRiskDetails();
 
             UpdateDayDetails();
 
@@ -527,6 +532,69 @@ namespace Alarm_clock
         {
             txtboxSessionTime.Text = "5";
             startButton_Click(sender, e);
+        }
+
+        private void btnIncludeBreakSession_Click(object sender, EventArgs e)
+        {
+            if(isSessionStarted)
+            {
+                if (isSessionStarted)
+                {
+                    MessageBox.Show("A session already in progress. Please wait or stop session",
+                            "Prompt", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+
+                    return;
+                }
+            }
+
+            if(!isSessionStarted)
+            {
+                if (todaySessions.Count >= 1)
+                {
+                    isSessionStarted = true;
+
+                    var lastSessEndTime = todaySessions[todaySessions.Count - 1].SessionEnd;
+                    var presentTime = DateTime.Now;
+
+                    Session session = new Session
+                    {
+                        SessionStart = lastSessEndTime,
+                        SessionEnd = presentTime,
+                        TotalSession = (presentTime - lastSessEndTime).ToString(@"hh\:mm\:ss")
+                    };
+
+                    LastSessionEndTime = session.SessionEnd;
+
+                    addSession(session);
+                    isSessionStarted = false;
+
+                    btnAllSessions_Click(sender, e);
+                    buttonRefresh_Click(sender, e);
+                }
+            }            
+        }
+
+        public void updateRiskDetails()
+        {
+            TimeSpan riskTime = getRiskTime();
+
+            var hours = riskTime.TotalHours;
+            var minutes = riskTime.TotalMinutes;
+
+            // if more than 30 mins or more than hour make red
+            if (minutes >= 30 || hours >= 1)
+            {
+                labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
+            }
+            else
+            {
+                // normal
+                labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            }
+
+            labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+            lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
         }
     }
 }
