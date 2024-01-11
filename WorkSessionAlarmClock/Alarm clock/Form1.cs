@@ -585,11 +585,13 @@ namespace Alarm_clock
             if (minutes >= 30 || hours >= 1)
             {
                 labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
+                labelStar.ForeColor = System.Drawing.Color.OrangeRed;
             }
             else
             {
                 // normal
                 labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
+                labelStar.ForeColor = System.Drawing.SystemColors.Highlight;
             }
 
             labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
