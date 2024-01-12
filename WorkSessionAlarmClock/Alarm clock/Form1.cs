@@ -334,8 +334,21 @@ namespace Alarm_clock
             dataGridView1.DataSource = listSessionFormatted;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
+            var hours = totalSpan.TotalHours;
+
+            // if more than 3hrs mins make red
+            if (hours >= 3)
+            {
+                labelTotal.ForeColor = System.Drawing.Color.OrangeRed;
+            }
+            else
+            {
+                // normal
+                labelTotal.ForeColor = System.Drawing.SystemColors.Highlight;
+            }
 
             labelTotal.Text = totalSpan.ToString(@"hh\:mm\:ss");
+
             labelTotalElapses.Text = totalElapses.ToString();
 
             //TimeSpan riskTime = getRiskTime();
@@ -396,54 +409,63 @@ namespace Alarm_clock
 
             TimeSpan riskTime = new TimeSpan(0);
 
-            int count = 0;
+            int count = 0;            
+
             Session lastSession = new Session();
 
             TimeSpan firstTimeSpan = new TimeSpan(0);
 
             int i = todaySessions.Count;
 
-            for(int j=i-1; j>=0;j--)
+            if (todaySessions.Count > 0)
             {
-                var item = todaySessions[j];
+                DateTime nonBreakEndTime = DateTime.Now;
 
-                count++;
-                if (count == 1)
+                for (int j = i - 1; j >= 0; j--)
                 {
-                    lastSession = item;                    
-                    firstTimeSpan = lastSession.SessionEnd - lastSession.SessionStart;
-                    riskTime = riskTime + firstTimeSpan;
+                    var item = todaySessions[j];
 
-                    NonBreakStartTime = lastSession.SessionStart;
-                    continue;
+                    count++;
+                    if (count == 1)
+                    {
+                        lastSession = item;
+                        firstTimeSpan = lastSession.SessionEnd - lastSession.SessionStart;
+                        //riskTime = riskTime + firstTimeSpan;
+
+                        NonBreakStartTime = lastSession.SessionStart;
+                        nonBreakEndTime = lastSession.SessionEnd;
+                        continue;
+                    }
+
+                    TimeSpan twoSessionGap = lastSession.SessionStart - item.SessionEnd;
+
+                    int gapHours = Math.Abs(twoSessionGap.Hours);
+                    int gapMinutes = Math.Abs(twoSessionGap.Minutes);
+
+                    // we only add if gap between two sessions is less than 15 minutes
+                    if ((gapHours == 0) && (gapMinutes <= minSessionBrake))
+                    {
+                        //TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
+                        //riskTime = riskTime + currentDifference;
+
+                        NonBreakStartTime = item.SessionStart;
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                    lastSession = item;
                 }
 
-                TimeSpan twoSessionGap = lastSession.SessionStart - item.SessionEnd;
+                //foreach (var item in todaySessions)
+                //{
 
-                int gapHours = Math.Abs(twoSessionGap.Hours);
-                int gapMinutes = Math.Abs(twoSessionGap.Minutes);
+                //}
 
-                // we only add if gap between two sessions is less than 15 minutes
-                if ((gapHours == 0) && (gapMinutes <= minSessionBrake))
-                {
-                    TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
-                    riskTime = riskTime + currentDifference;
-
-                    NonBreakStartTime = item.SessionStart;
-                }
-                else
-                {
-                    break;
-                }
-
-                lastSession = item;
+                // you need not to caluculate each session gap and sum it
+                riskTime = nonBreakEndTime - NonBreakStartTime;
             }
-
-            //foreach (var item in todaySessions)
-            //{
-                
-            //}
-
             return riskTime;
         }
 
@@ -581,8 +603,8 @@ namespace Alarm_clock
             var hours = riskTime.TotalHours;
             var minutes = riskTime.TotalMinutes;
 
-            // if more than 30 mins or more than hour make red
-            if (minutes >= 30 || hours >= 1)
+            // if more than 20 mins or more than hour make red
+            if (minutes >= 20 || hours >= 1)
             {
                 labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
                 labelStar.ForeColor = System.Drawing.Color.OrangeRed;
