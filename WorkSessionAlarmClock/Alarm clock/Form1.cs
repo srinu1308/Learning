@@ -24,6 +24,7 @@ namespace Alarm_clock
 
         private int riskDangerTotalSessionTime = 3;
         private int riskDangerNonBreakSessionTime = 20;
+        private int riskDangerTotalDaySpent = 6;
 
         private List<Session> todaySessions { get; set; }
 
@@ -48,6 +49,16 @@ namespace Alarm_clock
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // set actual session
+            bool resultSession = int.TryParse(ConfigurationManager.AppSettings["SessionTotalTime"], out sessionTotalTime);
+
+            if (!resultSession)
+            {
+                sessionTotalTime = 45;
+            }
+            txtboxSessionTime.Text = sessionTotalTime.ToString();
+
+
             // default for one minute
             int minutesMilliSeconds = 60000;
             int timerElapseTime = 1;
@@ -106,6 +117,13 @@ namespace Alarm_clock
             {
                 // for calculating non contineous session break time
                 minSessionBrake = 5;
+            }
+
+            bool result4 = int.TryParse(ConfigurationManager.AppSettings["RiskDangerTotalDaySpent"], out riskDangerTotalDaySpent);
+            if (!result4)
+            {
+                // for calculating non contineous session break time
+                riskDangerTotalDaySpent = 6;
             }
 
             dayStartedTime = DateTime.Now;
@@ -582,6 +600,13 @@ namespace Alarm_clock
             
             var dayEndTime = currentTimeNow;
             var totalTimeSpent = dayEndTime - dayStartedTime;
+
+            var hours = totalTimeSpent.TotalHours;
+
+            if(hours >= riskDangerTotalDaySpent)
+            {
+                labelTotalTimeSpent.ForeColor = System.Drawing.Color.OrangeRed;
+            }
 
             labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
         }
