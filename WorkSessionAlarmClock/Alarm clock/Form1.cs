@@ -36,6 +36,8 @@ namespace Alarm_clock
 
         private DateTime tempSessionStartedDateTime;
 
+        private DateTime dayStartedTime;
+
         public Form1()
         {
             InitializeComponent();
@@ -106,6 +108,8 @@ namespace Alarm_clock
                 minSessionBrake = 5;
             }
 
+            dayStartedTime = DateTime.Now;
+            UpdateDayDetails();
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -571,26 +575,15 @@ namespace Alarm_clock
 
         private void UpdateDayDetails()
         {
-            if (todaySessions.Count >= 1)
-            {
-                labelDayStartTime.Text = todaySessions[0].SessionStart.ToString("hh:mm:ss tt");
+            labelDayStartTime.Text = dayStartedTime.ToString("hh:mm:ss tt");
 
-                //if (todaySessions.Count >= 2)
-                //{
-                //labelDayEndTime.Text = todaySessions[todaySessions.Count - 1].SessionEnd.ToString("hh:mm:ss tt");
+            var currentTimeNow = DateTime.Now;
+            labelDayEndTime.Text = currentTimeNow.ToString("hh:mm:ss tt");
+            
+            var dayEndTime = currentTimeNow;
+            var totalTimeSpent = dayEndTime - dayStartedTime;
 
-                var currentTimeNow = DateTime.Now;
-
-                labelDayEndTime.Text = currentTimeNow.ToString("hh:mm:ss tt");
-
-                var dayStartTime = todaySessions[0].SessionStart;
-                //var dayEndTime = todaySessions[todaySessions.Count - 1].SessionEnd;
-                var dayEndTime = currentTimeNow;
-                var totalTimeSpent = dayEndTime - dayStartTime;
-
-                labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
-                //}
-            }
+            labelTotalTimeSpent.Text = totalTimeSpent.ToString(@"hh\:mm\:ss");
         }
 
         private void UpdateLastSessionBreak(DateTime initialTime,DateTime endTime)
