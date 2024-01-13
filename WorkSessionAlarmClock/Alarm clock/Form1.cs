@@ -21,6 +21,10 @@ namespace Alarm_clock
 
         private int sessionTotalTime = 45;
         private int minSessionBrake = 5;
+
+        private int riskDangerTotalSessionTime = 3;
+        private int riskDangerNonBreakSessionTime = 20;
+
         private List<Session> todaySessions { get; set; }
 
         private bool isSessionStarted = false;
@@ -29,6 +33,8 @@ namespace Alarm_clock
         private DateTime NonBreakStartTime { get; set; }
         private DateTime LastSessionEndTime { get; set; }
         public int elapsedTime { get; set; }
+
+        private DateTime tempSessionStartedDateTime;
 
         public Form1()
         {
@@ -79,6 +85,27 @@ namespace Alarm_clock
             dateTimePickerTimerEnds.Value = dateTimePicker1.Value.AddMinutes(sessionTotalTime);
 
             //dataGridView1.DataSource = todaySessions;
+
+           var result1=int.TryParse(ConfigurationManager.AppSettings["RiskDangerNonBreakSessionTime"], out riskDangerNonBreakSessionTime);
+
+            if(!result1)
+            {
+                riskDangerNonBreakSessionTime = 20;
+            }
+        
+           var result2=int.TryParse(ConfigurationManager.AppSettings["RiskDangerTotalSessionTime"], out riskDangerTotalSessionTime);
+            if(!result2)
+            {
+                riskDangerTotalSessionTime = 3;
+            }
+
+            bool result3 = int.TryParse(ConfigurationManager.AppSettings["MinimumSessionBrakeTime"], out minSessionBrake);
+            if (!result3)
+            {
+                // for calculating non contineous session break time
+                minSessionBrake = 5;
+            }
+
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -118,6 +145,49 @@ namespace Alarm_clock
                 UpdateLastSessionBreak(todaySessions[todaySessions.Count - 1].SessionEnd, DateTime.Now);
             }
 
+            tempSessionStartedDateTime = DateTime.Now;
+
+            // if user took minimum break
+            if (doesUserHadMinimumSessionBrakeTime(tempSessionStartedDateTime))
+            {
+                ResetRiskDetails();
+            }
+
+        }
+
+        public bool doesUserHadMinimumSessionBrakeTime(DateTime presentTime)
+        {
+            try
+            {
+                bool result = false;
+
+                // if it is first session
+                if (todaySessions.Count == 0)
+                {
+                    result = true;
+                }
+
+                if (todaySessions.Count > 0)
+                {
+                    var lastSession = todaySessions[todaySessions.Count - 1];
+
+                    TimeSpan twoSessionGap = presentTime - lastSession.SessionEnd;
+
+                    int gapHours = Math.Abs(twoSessionGap.Hours);
+                    int gapMinutes = Math.Abs(twoSessionGap.Minutes);
+
+                    if ((gapHours == 0) && (gapMinutes >= minSessionBrake))
+                    {
+
+                        result = true;
+                    }
+                }
+                return result;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
@@ -216,9 +286,11 @@ namespace Alarm_clock
                         soundPlayer.Stop();
                     }
 
-                    TimeSpan riskTime = getRiskTime();
-                    lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
-                    lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+                    //TimeSpan riskTime = getRiskTime();
+                    //lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+                    //lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+
+                    TimeSpan riskTime=updateRiskDetails();
 
                     //this.WindowState = FormWindowState.Maximized;
                     //MessageBox.Show("Session is ended. Take Break");
@@ -337,7 +409,7 @@ namespace Alarm_clock
             var hours = totalSpan.TotalHours;
 
             // if more than 3hrs mins make red
-            if (hours >= 3)
+            if (hours >= riskDangerTotalSessionTime)
             {
                 labelTotal.ForeColor = System.Drawing.Color.OrangeRed;
             }
@@ -399,13 +471,7 @@ namespace Alarm_clock
         }
 
         private TimeSpan getRiskTime()
-        {
-            bool isSuccess = int.TryParse(ConfigurationManager.AppSettings["MinimumSessionBrakeTime"], out minSessionBrake);
-            if (!isSuccess)
-            {
-                // for calculating non contineous session break time
-                minSessionBrake = 5;
-            }
+        {            
 
             TimeSpan riskTime = new TimeSpan(0);
 
@@ -443,7 +509,7 @@ namespace Alarm_clock
                     int gapMinutes = Math.Abs(twoSessionGap.Minutes);
 
                     // we only add if gap between two sessions is less than 15 minutes
-                    if ((gapHours == 0) && (gapMinutes <= minSessionBrake))
+                    if ((gapHours == 0) && (gapMinutes < minSessionBrake))
                     {
                         //TimeSpan currentDifference = item.SessionEnd - item.SessionStart;
                         //riskTime = riskTime + currentDifference;
@@ -596,15 +662,42 @@ namespace Alarm_clock
             }            
         }
 
-        public void updateRiskDetails()
+        public void ResetRiskDetails()
         {
+            TimeSpan riskTime = new TimeSpan(0);
+            //00:00:00 00
+
+            labelRiskTime.ForeColor = System.Drawing.SystemColors.Highlight;
+            labelStar.ForeColor = System.Drawing.SystemColors.Highlight;
+
+            labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+
+            if(isSessionStarted)
+            {
+                lblSinceTxt.Text = tempSessionStartedDateTime.ToString("hh:mm:ss tt");
+            }
+            else
+            {
+                lblSinceTxt.Text = "00:00:00 00";
+            }
+            
+            lblLastSessionEndTime.Text = "00:00:00 00";
+        }
+
+        public TimeSpan updateRiskDetails()
+        {
+            if(isSessionStarted)
+            {
+                return new TimeSpan(0);
+            }
+
             TimeSpan riskTime = getRiskTime();
 
             var hours = riskTime.TotalHours;
             var minutes = riskTime.TotalMinutes;
 
             // if more than 20 mins or more than hour make red
-            if (minutes >= 20 || hours >= 1)
+            if (minutes >= riskDangerNonBreakSessionTime || hours >= 1)
             {
                 labelRiskTime.ForeColor = System.Drawing.Color.OrangeRed;
                 labelStar.ForeColor = System.Drawing.Color.OrangeRed;
@@ -616,9 +709,19 @@ namespace Alarm_clock
                 labelStar.ForeColor = System.Drawing.SystemColors.Highlight;
             }
 
-            labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
-            lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
-            lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+            if(todaySessions.Count == 0)
+            {
+                // for no sessions
+                ResetRiskDetails();
+            }
+            else
+            {
+                labelRiskTime.Text = riskTime.ToString(@"hh\:mm\:ss");
+                lblSinceTxt.Text = NonBreakStartTime.ToString("hh:mm:ss tt");
+                lblLastSessionEndTime.Text = LastSessionEndTime.ToString("hh:mm:ss tt");
+            }
+
+            return riskTime;
         }
     }
 }
