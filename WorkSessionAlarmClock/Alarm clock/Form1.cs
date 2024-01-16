@@ -198,7 +198,7 @@ namespace Alarm_clock
                     int gapHours = Math.Abs(twoSessionGap.Hours);
                     int gapMinutes = Math.Abs(twoSessionGap.Minutes);
 
-                    if ((gapHours == 0) && (gapMinutes >= minSessionBrake))
+                    if ((gapHours >= 1) || (gapMinutes >= minSessionBrake))
                     {
 
                         result = true;
