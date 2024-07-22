@@ -80,6 +80,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.labelStar = new System.Windows.Forms.Label();
+            this.btn20MinsSession = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -521,7 +522,7 @@
             // btn10Minutes
             // 
             this.btn10Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn10Minutes.Location = new System.Drawing.Point(742, 96);
+            this.btn10Minutes.Location = new System.Drawing.Point(742, 77);
             this.btn10Minutes.Margin = new System.Windows.Forms.Padding(2);
             this.btn10Minutes.Name = "btn10Minutes";
             this.btn10Minutes.Size = new System.Drawing.Size(181, 37);
@@ -534,7 +535,7 @@
             // btn5Minutes
             // 
             this.btn5Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn5Minutes.Location = new System.Drawing.Point(742, 53);
+            this.btn5Minutes.Location = new System.Drawing.Point(742, 36);
             this.btn5Minutes.Margin = new System.Windows.Forms.Padding(2);
             this.btn5Minutes.Name = "btn5Minutes";
             this.btn5Minutes.Size = new System.Drawing.Size(181, 37);
@@ -604,11 +605,25 @@
             this.labelStar.TabIndex = 48;
             this.labelStar.Text = "*";
             // 
+            // btn20MinsSession
+            // 
+            this.btn20MinsSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn20MinsSession.Location = new System.Drawing.Point(742, 118);
+            this.btn20MinsSession.Margin = new System.Windows.Forms.Padding(2);
+            this.btn20MinsSession.Name = "btn20MinsSession";
+            this.btn20MinsSession.Size = new System.Drawing.Size(181, 37);
+            this.btn20MinsSession.TabIndex = 49;
+            this.btn20MinsSession.Text = "20 Min Session";
+            this.btn20MinsSession.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn20MinsSession.UseVisualStyleBackColor = true;
+            this.btn20MinsSession.Click += new System.EventHandler(this.btn20MinsSession_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1015, 649);
+            this.Controls.Add(this.btn20MinsSession);
             this.Controls.Add(this.labelStar);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label19);
@@ -717,6 +732,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label labelStar;
+        private System.Windows.Forms.Button btn20MinsSession;
     }
 }
 

@@ -741,5 +741,11 @@ namespace Alarm_clock
 
             return riskTime;
         }
+
+        private void btn20MinsSession_Click(object sender, EventArgs e)
+        {
+            txtboxSessionTime.Text = "20";
+            startButton_Click(sender, e);
+        }
     }
 }
